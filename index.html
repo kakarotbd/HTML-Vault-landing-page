@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HTML Vault — Encrypted App Delivery</title>
@@ -391,6 +391,41 @@ body::before {
   .section { padding: 80px 20px; }
   .divider { margin: 0 20px; }
 }
+
+/* ── GALLERY ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.gallery-item {
+  position: relative; border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border2); background: var(--surface);
+  cursor: pointer; transition: var(--transition); aspect-ratio: 16/10;
+}
+.gallery-item:hover {
+  border-color: var(--border); transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform 0.4s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s; font-size: 30px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-title-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  font-size: 12px; font-family: 'JetBrains Mono', monospace;
+  color: #fff; opacity: 0; transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-title-bar { opacity: 1; }
 </style>
 </head>
 <body>
@@ -416,6 +451,7 @@ body::before {
   <div class="nav-links">
     <a href="#how" class="nav-link" data-en="Architecture" data-bn="আর্কিটেকচার">Architecture</a>
     <a href="#features" class="nav-link" data-en="Features" data-bn="ফিচার">Features</a>
+    <a href="#gallery" class="nav-link" data-en="Gallery" data-bn="গ্যালারি">Gallery</a>
     <a href="#security" class="nav-link" data-en="Security" data-bn="নিরাপত্তা">Security</a>
     <a href="#pricing" class="nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a>
   </div>
@@ -485,7 +521,7 @@ body::before {
   <div class="reveal">
     <div class="section-label" data-en="ARCHITECTURE" data-bn="আর্কিটেকচার">ARCHITECTURE</div>
     <h2 class="section-title" data-en="How The Encryption Works" data-bn="এনক্রিপশন কীভাবে কাজ করে">How The Encryption Works</h2>
-    <p class="section-sub" data-en="Our system diagram — click to zoom in for full details." data-bn="আপনার system diagram — পুরো বিবরণের জন্য ক্লিক করুন।">Our system diagram — click to zoom in for full details.</p>
+    <p class="section-sub" data-en="Your system diagram — click to zoom in for full details." data-bn="আপনার system diagram — পুরো বিবরণের জন্য ক্লিক করুন।">Your system diagram — click to zoom in for full details.</p>
   </div>
 
   <!-- Diagram with dummy base64 — replace src with your real base64 -->
@@ -653,7 +689,7 @@ body::before {
       <ul class="price-features">
         <li data-en="1 app, up to 5 devices" data-bn="১টি app, ৫টি পর্যন্ত device">1 app, up to 5 devices</li>
         <li data-en="Auto-update system" data-bn="Auto-update system">Auto-update system</li>
-        <li data-en="No Admin Panle" data-bn="অ্যাডমিন প্যানেল নেই">No Admin Panle</li>
+        <li data-en="You manage your own updates" data-bn="আপনি update manage করবেন">You manage your own updates</li>
         <li data-en="Triple-layer encryption" data-bn="ট্রিপল-লেয়ার এনক্রিপশন">Triple-layer encryption</li>
         <li data-en="Device lock & fingerprinting" data-bn="Device lock ও fingerprinting">Device lock & fingerprinting</li>
       </ul>
