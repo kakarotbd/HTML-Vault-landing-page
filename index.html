@@ -393,38 +393,14 @@ body::before {
 }
 
 /* ── GALLERY ── */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
-}
-.gallery-item {
-  position: relative; border-radius: 14px; overflow: hidden;
-  border: 1px solid var(--border2); background: var(--surface);
-  cursor: pointer; transition: var(--transition); aspect-ratio: 16/10;
-}
-.gallery-item:hover {
-  border-color: var(--border); transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-}
-.gallery-item img {
-  width: 100%; height: 100%; object-fit: cover;
-  display: block; transition: transform 0.4s ease;
-}
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.gallery-item { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--border2); background: var(--surface); cursor: pointer; transition: var(--transition); aspect-ratio: 16/10; }
+.gallery-item:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
 .gallery-item:hover img { transform: scale(1.04); }
-.gallery-overlay {
-  position: absolute; inset: 0; background: rgba(0,0,0,0.55);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.3s; font-size: 30px;
-}
+.gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; font-size: 30px; }
 .gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-title-bar {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 10px 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-  font-size: 12px; font-family: 'JetBrains Mono', monospace;
-  color: #fff; opacity: 0; transition: opacity 0.3s;
-}
+.gallery-title-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #fff; opacity: 0; transition: opacity 0.3s; }
 .gallery-item:hover .gallery-title-bar { opacity: 1; }
 </style>
 </head>
@@ -527,8 +503,7 @@ body::before {
   <!-- Diagram with dummy base64 — replace src with your real base64 -->
   <div class="reveal d1">
     <div class="diagram-viewer" onclick="openZoom()">
-      <img id="uploadedImg"
-      <img src="Encryption Works.png">
+      <img id="uploadedImg" src="Encryption Works.png">
       <div class="zoom-hint">🔍 <span data-en="Click to zoom" data-bn="জুম করুন">Click to zoom</span></div>
     </div>
   </div>
@@ -624,6 +599,18 @@ body::before {
       <div class="feat-desc" data-en="IP-based lockout after 5 failed attempts. KV-backed persistence survives worker restarts." data-bn="5টি ব্যর্থ প্রচেষ্টার পরে IP-based lockout। KV-backed persistence worker restart-এ টিকে থাকে।">IP-based lockout after 5 failed attempts. KV-backed persistence survives worker restarts.</div>
     </div>
   </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="reveal">
+    <div class="section-label" data-en="SCREENSHOTS" data-bn="স্ক্রিনশট">SCREENSHOTS</div>
+    <h2 class="section-title" data-en="See It In Action" data-bn="সরাসরি দেখুন">See It In Action</h2>
+    <p class="section-sub" data-en="Real screenshots from the admin panel, launcher, and encryption system." data-bn="Admin panel, launcher এবং encryption system-এর real screenshot।">Real screenshots from the admin panel, launcher, and encryption system.</p>
+  </div>
+  <div class="gallery-grid reveal d1" id="galleryGrid"></div>
 </section>
 
 <div class="divider"></div>
@@ -816,6 +803,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // ── ZOOM ──
 function openZoom() {
   const img = document.getElementById('uploadedImg');
+  if (!img || !img.src) return;
   document.getElementById('zoomImg').src = img.src;
   document.getElementById('zoomModal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -825,6 +813,39 @@ function closeZoom() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
+
+// ── GALLERY ──
+// ↓↓↓ screenshot link গুলো এখানে add করো ↓↓↓
+const galleryImages = [
+  { src: "https://i.ibb.co/JRxMK20X/image.png", title: "Admin Panel" },
+  { src: "https://i.ibb.co/1ttSMz7S/image.png", title: "Admin Panel 2" },
+  { src: "https://i.ibb.co/LXLGS13H/image.png", title: "Code Editor" },
+  { src: "https://i.ibb.co/gMyVQBf9/image.png", title: "Launcher" },
+  { src: "https://i.ibb.co/gL7CQXBW/image.png", title: "App" },
+];
+// ↑↑↑ link add করা শেষ ↑↑↑
+
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  galleryImages.forEach((item) => {
+    const el = document.createElement('div');
+    el.className = 'gallery-item';
+    el.innerHTML = `
+      <img src="${item.src}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'">
+      <div class="gallery-overlay">🔍</div>
+      <div class="gallery-title-bar">${item.title}</div>
+    `;
+    el.addEventListener('click', () => {
+      document.getElementById('zoomImg').src = item.src;
+      document.getElementById('zoomModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    grid.appendChild(el);
+  });
+}
+renderGallery();
 
 // ── NAV ACTIVE HIGHLIGHT ──
 const sections = document.querySelectorAll('section[id]');
