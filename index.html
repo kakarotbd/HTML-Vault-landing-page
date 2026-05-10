@@ -392,16 +392,127 @@ body::before {
   .divider { margin: 0 20px; }
 }
 
-/* ── GALLERY ── */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-.gallery-item { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--border2); background: var(--surface); cursor: pointer; transition: var(--transition); aspect-ratio: 16/10; }
-.gallery-item:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-.gallery-item:hover img { transform: scale(1.04); }
-.gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; font-size: 30px; }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-title-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #fff; opacity: 0; transition: opacity 0.3s; }
-.gallery-item:hover .gallery-title-bar { opacity: 1; }
+/* ── ORDER FORM MODAL ── */
+.form-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9998;
+  background: rgba(0,0,0,0.88); backdrop-filter: blur(24px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.form-overlay.open { display: flex; animation: modalIn 0.25s ease; }
+
+.form-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 44px 40px;
+  max-width: 520px; width: 100%;
+  position: relative;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 0 80px rgba(124,58,237,0.2);
+}
+
+.form-modal::-webkit-scrollbar { width: 4px; }
+.form-modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 100px; }
+
+.form-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--surface2); border: 1px solid var(--border2);
+  color: var(--text2); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.form-close:hover { background: var(--purple-glow); border-color: var(--purple); color: var(--text); }
+
+.form-plan-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 14px; border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--purple-glow2);
+  color: var(--purple-light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+
+.form-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px; font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.form-sub {
+  font-size: 13px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text2); letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%; padding: 13px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif; font-size: 14px;
+  transition: var(--transition); outline: none;
+}
+.form-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+}
+.form-input::placeholder { color: var(--text3); }
+
+select.form-input { cursor: pointer; }
+select.form-input option { background: var(--surface2); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.form-submit {
+  width: 100%; margin-top: 8px;
+  padding: 15px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--purple) 0%, #5b21b6 100%);
+  color: #fff; font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 700;
+  border: none; cursor: pointer; transition: var(--transition);
+  box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,58,237,0.55); }
+.form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.form-success {
+  display: none; text-align: center; padding: 20px 0;
+}
+.form-success-icon { font-size: 52px; margin-bottom: 16px; }
+.form-success-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--green); }
+.form-success-sub { font-size: 14px; color: var(--text2); line-height: 1.65; }
+
+.form-error {
+  background: rgba(255,71,87,0.1); border: 1px solid rgba(255,71,87,0.3);
+  border-radius: 10px; padding: 10px 14px;
+  font-size: 12px; color: #ff7070;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 12px; display: none;
+}
+
+@media (max-width: 560px) {
+  .form-modal { padding: 32px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -427,7 +538,6 @@ body::before {
   <div class="nav-links">
     <a href="#how" class="nav-link" data-en="Architecture" data-bn="আর্কিটেকচার">Architecture</a>
     <a href="#features" class="nav-link" data-en="Features" data-bn="ফিচার">Features</a>
-    <a href="#gallery" class="nav-link" data-en="Gallery" data-bn="গ্যালারি">Gallery</a>
     <a href="#security" class="nav-link" data-en="Security" data-bn="নিরাপত্তা">Security</a>
     <a href="#pricing" class="nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a>
   </div>
@@ -503,7 +613,8 @@ body::before {
   <!-- Diagram with dummy base64 — replace src with your real base64 -->
   <div class="reveal d1">
     <div class="diagram-viewer" onclick="openZoom()">
-      <img id="uploadedImg" src="Encryption Works.png">
+      <img id="uploadedImg"
+      <img src="Encryption Works.png">
       <div class="zoom-hint">🔍 <span data-en="Click to zoom" data-bn="জুম করুন">Click to zoom</span></div>
     </div>
   </div>
@@ -603,18 +714,6 @@ body::before {
 
 <div class="divider"></div>
 
-<!-- GALLERY -->
-<section class="section" id="gallery">
-  <div class="reveal">
-    <div class="section-label" data-en="SCREENSHOTS" data-bn="স্ক্রিনশট">SCREENSHOTS</div>
-    <h2 class="section-title" data-en="See It In Action" data-bn="সরাসরি দেখুন">See It In Action</h2>
-    <p class="section-sub" data-en="Real screenshots from the admin panel, launcher, and encryption system." data-bn="Admin panel, launcher এবং encryption system-এর real screenshot।">Real screenshots from the admin panel, launcher, and encryption system.</p>
-  </div>
-  <div class="gallery-grid reveal d1" id="galleryGrid"></div>
-</section>
-
-<div class="divider"></div>
-
 <!-- SECURITY -->
 <section class="section" id="security">
   <div class="reveal">
@@ -680,9 +779,9 @@ body::before {
         <li data-en="Triple-layer encryption" data-bn="ট্রিপল-লেয়ার এনক্রিপশন">Triple-layer encryption</li>
         <li data-en="Device lock & fingerprinting" data-bn="Device lock ও fingerprinting">Device lock & fingerprinting</li>
       </ul>
-      <a href="#contact" class="btn-secondary" style="width:100%;justify-content:center;">
+      <button onclick="openForm('Basic')" class="btn-secondary" style="width:100%;justify-content:center;">
         <span data-en="Get Started" data-bn="শুরু করুন">Get Started</span>
-      </a>
+      </button>
     </div>
 
     <!-- DEVELOPER — featured -->
@@ -700,9 +799,9 @@ body::before {
         <li data-en="Full admin control" data-bn="সম্পূর্ণ admin control">Full admin control</li>
         <li data-en="Priority support" data-bn="Priority support">Priority support</li>
       </ul>
-      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;">
+      <button onclick="openForm('Developer')" class="btn-primary" style="width:100%;justify-content:center;">
         <span data-en="Get Started" data-bn="শুরু করুন">Get Started</span>
-      </a>
+      </button>
     </div>
 
     <!-- ENTERPRISE -->
@@ -719,10 +818,26 @@ body::before {
         <li data-en="SLA & dedicated support" data-bn="SLA ও dedicated support">SLA & dedicated support</li>
         <li data-en="Custom feature development" data-bn="Custom feature development">Custom feature development</li>
       </ul>
-      <a href="#contact" class="btn-secondary" style="width:100%;justify-content:center;">
+      <button onclick="openForm('Enterprise')" class="btn-secondary" style="width:100%;justify-content:center;">
         <span data-en="Contact Us" data-bn="যোগাযোগ করুন">Contact Us</span>
-      </a>
+      </button>
     </div>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+<!-- DEV LINK -->
+<section class="section" id="demo" style="text-align:center;padding-top:72px;padding-bottom:72px;">
+  <div class="reveal">
+    <div class="section-label" style="justify-content:center;" data-en="LIVE DEMO" data-bn="লাইভ ডেমো">LIVE DEMO</div>
+    <h2 class="section-title" data-en="Try It Before You Buy" data-bn="কেনার আগে ব্যবহার করুন">Try It Before You Buy</h2>
+    <p class="section-sub" style="margin:0 auto 36px;" data-en="Experience HTML Vault live. See exactly how the encryption, device lock, and auto-update system works." data-bn="HTML Vault সরাসরি অনুভব করুন। এনক্রিপশন, ডিভাইস লক এবং অটো-আপডেট সিস্টেম দেখুন।">Experience HTML Vault live. See exactly how the encryption, device lock, and auto-update system works.</p>
+    <a href="YOUR_DEMO_LINK_HERE" target="_blank" class="btn-primary" style="display:inline-flex;font-size:16px;padding:16px 40px;">
+      🚀 <span data-en="Open Live Demo" data-bn="লাইভ ডেমো খুলুন">Open Live Demo</span>
+    </a>
+    <p style="margin-top:16px;font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;" data-en="Demo is read-only. No signup required." data-bn="Demo শুধু দেখার জন্য। Sign up লাগবে না।">Demo is read-only. No signup required.</p>
   </div>
 </section>
 
@@ -803,7 +918,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // ── ZOOM ──
 function openZoom() {
   const img = document.getElementById('uploadedImg');
-  if (!img || !img.src) return;
   document.getElementById('zoomImg').src = img.src;
   document.getElementById('zoomModal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -813,39 +927,6 @@ function closeZoom() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
-
-// ── GALLERY ──
-// ↓↓↓ screenshot link গুলো এখানে add করো ↓↓↓
-const galleryImages = [
-  { src: "https://i.ibb.co/JRxMK20X/image.png", title: "Admin Panel" },
-  { src: "https://i.ibb.co/1ttSMz7S/image.png", title: "Admin Panel 2" },
-  { src: "https://i.ibb.co/LXLGS13H/image.png", title: "Code Editor" },
-  { src: "https://i.ibb.co/gMyVQBf9/image.png", title: "Launcher" },
-  { src: "https://i.ibb.co/gL7CQXBW/image.png", title: "App" },
-];
-// ↑↑↑ link add করা শেষ ↑↑↑
-
-function renderGallery() {
-  const grid = document.getElementById('galleryGrid');
-  if (!grid) return;
-  grid.innerHTML = '';
-  galleryImages.forEach((item) => {
-    const el = document.createElement('div');
-    el.className = 'gallery-item';
-    el.innerHTML = `
-      <img src="${item.src}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'">
-      <div class="gallery-overlay">🔍</div>
-      <div class="gallery-title-bar">${item.title}</div>
-    `;
-    el.addEventListener('click', () => {
-      document.getElementById('zoomImg').src = item.src;
-      document.getElementById('zoomModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-    grid.appendChild(el);
-  });
-}
-renderGallery();
 
 // ── NAV ACTIVE HIGHLIGHT ──
 const sections = document.querySelectorAll('section[id]');
@@ -859,5 +940,163 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 </script>
+
+<!-- ORDER FORM MODAL -->
+<div class="form-overlay" id="formOverlay">
+  <div class="form-modal" id="formModal">
+    <button class="form-close" onclick="closeForm()">✕</button>
+
+    <!-- Form content -->
+    <div id="formContent">
+      <div class="form-plan-badge" id="formPlanBadge">⚡ Basic Plan</div>
+      <h2 class="form-title" data-en="Get Started" data-bn="শুরু করুন">Get Started</h2>
+      <p class="form-sub" data-en="Fill in your details and we'll get back to you within 24 hours." data-bn="আপনার তথ্য দিন, আমরা ২৪ ঘণ্টার মধ্যে যোগাযোগ করবো।">Fill in your details and we'll get back to you within 24 hours.</p>
+
+      <div class="form-group">
+        <label class="form-label" data-en="Full Name *" data-bn="পূর্ণ নাম *">Full Name *</label>
+        <input type="text" class="form-input" id="f_name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-en="Company / Business Name" data-bn="কোম্পানি / ব্যবসার নাম">Company / Business Name</label>
+        <input type="text" class="form-input" id="f_company" placeholder="Acme Software Ltd.">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-en="Email Address *" data-bn="ইমেইল *">Email Address *</label>
+          <input type="email" class="form-input" id="f_email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Phone Number *" data-bn="ফোন নম্বর *">Phone Number *</label>
+          <input type="tel" class="form-input" id="f_phone" placeholder="+880 1700 000000" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-en="WhatsApp Number" data-bn="WhatsApp নম্বর">WhatsApp Number</label>
+        <input type="tel" class="form-input" id="f_whatsapp" placeholder="+880 1700 000000 (if different)">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-en="Best Time to Contact *" data-bn="যোগাযোগের সেরা সময় *">Best Time to Contact *</label>
+        <select class="form-input" id="f_time" required>
+          <option value="" disabled selected data-en="Select a time" data-bn="সময় বেছে নিন">Select a time</option>
+          <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
+          <option value="Afternoon (12PM - 5PM)">Afternoon (12PM - 5PM)</option>
+          <option value="Evening (5PM - 9PM)">Evening (5PM - 9PM)</option>
+          <option value="Anytime">Anytime</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-en="Message (optional)" data-bn="বার্তা (ঐচ্ছিক)">Message (optional)</label>
+        <textarea class="form-input" id="f_message" rows="3" placeholder="Tell us about your project..." style="resize:vertical;min-height:80px"></textarea>
+      </div>
+
+      <div class="form-error" id="formError"></div>
+
+      <button class="form-submit" id="formSubmitBtn" onclick="submitForm()">
+        <span id="submitText">🚀 Submit Request</span>
+      </button>
+
+      <p style="margin-top:14px;font-size:11px;color:var(--text3);text-align:center;font-family:'JetBrains Mono',monospace;" data-en="Your info is secure. We never share your data." data-bn="আপনার তথ্য সুরক্ষিত। আমরা কখনো শেয়ার করি না।">Your info is secure. We never share your data.</p>
+    </div>
+
+    <!-- Success state -->
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✅</div>
+      <div class="form-success-title" data-en="Request Sent!" data-bn="অনুরোধ পাঠানো হয়েছে!">Request Sent!</div>
+      <p class="form-success-sub" data-en="We'll contact you within 24 hours. Check your email for confirmation." data-bn="আমরা ২৪ ঘণ্টার মধ্যে যোগাযোগ করবো।">We'll contact you within 24 hours. Check your email for confirmation.</p>
+      <button onclick="closeForm()" class="btn-primary" style="margin-top:24px;">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── FORM ──
+const WORKER_URL = 'https://crimson-fog-0b24.rafin-goku.workers.dev'; // তোমার worker URL দাও
+
+function openForm(plan) {
+  document.getElementById('formPlanBadge').textContent = '⚡ ' + plan + ' Plan';
+  document.getElementById('formContent').style.display = 'block';
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('formError').style.display = 'none';
+  document.getElementById('formOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Store selected plan
+  document.getElementById('formModal').dataset.plan = plan;
+}
+
+function closeForm() {
+  document.getElementById('formOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('formOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeForm();
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
+
+async function submitForm() {
+  const btn = document.getElementById('formSubmitBtn');
+  const errEl = document.getElementById('formError');
+  const plan = document.getElementById('formModal').dataset.plan || 'Unknown';
+
+  const name = document.getElementById('f_name').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const phone = document.getElementById('f_phone').value.trim();
+  const time = document.getElementById('f_time').value;
+
+  // Validate
+  if (!name) { showErr('Please enter your full name.'); return; }
+  if (!email || !email.includes('@')) { showErr('Please enter a valid email address.'); return; }
+  if (!phone) { showErr('Please enter your phone number.'); return; }
+  if (!time) { showErr('Please select the best time to contact.'); return; }
+
+  const data = {
+    plan,
+    name,
+    company: document.getElementById('f_company').value.trim(),
+    email,
+    phone,
+    whatsapp: document.getElementById('f_whatsapp').value.trim(),
+    bestTime: time,
+    message: document.getElementById('f_message').value.trim(),
+    submittedAt: new Date().toISOString(),
+    source: 'landing-page',
+  };
+
+  btn.disabled = true;
+  document.getElementById('submitText').textContent = '⏳ Sending...';
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch(WORKER_URL + '/api/inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Server error');
+    // Success
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  } catch(e) {
+    showErr('Failed to send: ' + e.message + '. Please try messaging us directly on Facebook.');
+  } finally {
+    btn.disabled = false;
+    document.getElementById('submitText').textContent = '🚀 Submit Request';
+  }
+}
+
+function showErr(msg) {
+  const el = document.getElementById('formError');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+</script>
+
 </body>
 </html>
