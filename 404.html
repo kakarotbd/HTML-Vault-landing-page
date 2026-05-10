@@ -3,35 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Vault — Encrypted App Delivery</title>
+<title>404 — HTML Vault</title>
 
-<!-- Google Fonts (10 font families) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
-<!-- External CSS Libraries -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <style>
-/* ── DESIGN TOKENS ── */
 :root {
   --bg: #03030a;
-  --bg2: #06060f;
   --surface: #0a0a18;
   --surface2: #0f0f20;
-  --surface3: #141428;
   --purple: #7c3aed;
   --purple-light: #a78bfa;
   --purple-glow: rgba(124,58,237,0.3);
   --purple-glow2: rgba(124,58,237,0.10);
-  --blue: #2563eb;
-  --blue-light: #60a5fa;
   --cyan: #06b6d4;
-  --cyan-glow: rgba(6,182,212,0.12);
   --green: #06ffa5;
-  --green-glow: rgba(6,255,165,0.12);
   --text: #eeeef8;
   --text2: #8a8aaa;
   --text3: #44445a;
@@ -41,13 +30,16 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Outfit', sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -59,7 +51,7 @@ body::before {
   pointer-events: none; z-index: 0; opacity: 0.3;
 }
 
-/* ── AMBIENT ORBS ── */
+/* ── ORBS ── */
 .orb {
   position: fixed; border-radius: 50%; pointer-events: none;
   filter: blur(90px); z-index: 0; animation: floatOrb 14s ease-in-out infinite;
@@ -85,12 +77,8 @@ body::before {
   padding: 0 44px; height: 70px;
   background: rgba(3,3,10,0.75);
   backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
   border-bottom: 1px solid var(--border2);
-  transition: var(--transition);
 }
-.nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 4px 48px rgba(0,0,0,0.5); }
-
 .nav-logo {
   font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800;
   letter-spacing: 0.04em; color: var(--text); display: flex; align-items: center;
@@ -104,47 +92,15 @@ body::before {
 }
 .nav-logo em { color: var(--purple-light); font-style: normal; }
 
-.nav-links {
-  display: flex; align-items: center; gap: 2px;
-}
-.nav-link {
-  padding: 7px 16px; border-radius: 100px; color: var(--text2);
-  font-size: 13px; font-weight: 500; text-decoration: none; transition: var(--transition);
-}
-.nav-link:hover { color: var(--text); background: var(--border2); }
-
-.nav-right { display: flex; align-items: center; gap: 12px; }
-
-.lang-pill {
-  display: flex; gap: 3px; align-items: center;
-  background: var(--surface); border: 1px solid var(--border2);
-  border-radius: 100px; padding: 4px;
-}
-.lang-btn {
-  padding: 4px 13px; border-radius: 100px; border: none; background: transparent;
-  color: var(--text3); font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  font-weight: 500; cursor: pointer; transition: var(--transition); letter-spacing: 0.06em;
-}
-.lang-btn:hover, .lang-btn.active { background: var(--purple-glow); color: var(--text); }
-
-/* ── BUTTONS ── */
 .btn-primary {
-  padding: 13px 28px; border-radius: 12px;
+  padding: 9px 22px; border-radius: 12px;
   background: linear-gradient(135deg, var(--purple) 0%, #5b21b6 100%);
-  color: #fff; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+  color: #fff; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
   border: none; cursor: pointer; transition: var(--transition); text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: 0 4px 24px rgba(124,58,237,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-  position: relative; overflow: hidden;
-}
-.btn-primary::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-  opacity: 0; transition: opacity 0.3s;
+  box-shadow: 0 4px 24px rgba(124,58,237,0.4);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,58,237,0.55); }
-.btn-primary:hover::after { opacity: 1; }
-.btn-primary:active { transform: translateY(0); }
 
 .btn-secondary {
   padding: 13px 28px; border-radius: 12px; border: 1px solid var(--border);
@@ -152,951 +108,211 @@ body::before {
   font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
   cursor: pointer; transition: var(--transition); text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px;
-  backdrop-filter: blur(8px);
 }
 .btn-secondary:hover { background: var(--purple-glow2); border-color: var(--purple); transform: translateY(-2px); }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; text-align: center;
-  padding: 140px 24px 90px; position: relative; overflow: hidden; z-index: 1;
+/* ── MAIN ── */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 100px 24px 40px;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-glow {
-  position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(124,58,237,0.16) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.badge {
-  display: inline-flex; align-items: center; gap: 9px; padding: 7px 20px;
-  border-radius: 100px; border: 1px solid rgba(6,255,165,0.25);
-  background: rgba(6,255,165,0.07); color: var(--green);
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
-  letter-spacing: 0.04em; margin-bottom: 36px;
+/* ── 404 NUMBER ── */
+.error-code {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 22vw, 220px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0.04) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  user-select: none;
   animation: fadeUp 0.7s ease both;
 }
-.badge-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--green);
-  box-shadow: 0 0 10px var(--green); animation: pulseDot 2s infinite;
-}
-@keyframes pulseDot {
-  0%,100% { box-shadow: 0 0 10px var(--green); opacity: 1; }
-  50% { box-shadow: 0 0 2px var(--green); opacity: 0.4; }
-}
 
-.hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(46px, 9vw, 100px);
-  font-weight: 800; line-height: 1.03; letter-spacing: -0.03em;
-  margin-bottom: 28px; animation: fadeUp 0.7s 0.1s ease both;
-}
-.hero-title .grad {
+.error-code::before {
+  content: '404';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 45%, #06b6d4 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  filter: drop-shadow(0 0 30px rgba(124,58,237,0.4));
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: blur(28px);
+  opacity: 0.35;
+  z-index: -1;
 }
 
-.hero-sub {
-  font-size: clamp(15px, 2.2vw, 18px); color: var(--text2); max-width: 560px;
-  line-height: 1.78; margin-bottom: 52px; font-weight: 400;
-  animation: fadeUp 0.7s 0.2s ease both;
+/* ── LOCK ICON ── */
+.lock-wrap {
+  position: relative;
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s 0.05s ease both;
 }
 
-.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.7s 0.3s ease both; }
-
-/* ── STATS ── */
-.stats {
-  display: flex; margin-top: 84px; border: 1px solid var(--border); border-radius: 20px;
-  overflow: hidden; animation: fadeUp 0.7s 0.4s ease both;
-  background: var(--surface); position: relative; z-index: 1;
+.lock-icon {
+  width: 80px; height: 80px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(124,58,237,0.2);
+  animation: lockPulse 3s ease-in-out infinite;
 }
-.stats::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(124,58,237,0.06), transparent);
-  pointer-events: none;
+
+@keyframes lockPulse {
+  0%,100% { box-shadow: 0 0 50px rgba(124,58,237,0.2); }
+  50% { box-shadow: 0 0 80px rgba(124,58,237,0.4); }
 }
-.stat { padding: 28px 48px; text-align: center; border-right: 1px solid var(--border); flex: 1; }
-.stat:last-child { border-right: none; }
-.stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 6px; }
-.stat-num .accent { color: var(--purple-light); }
-.stat-label { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
+.lock-ring {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(124,58,237,0.2);
+  animation: ringExpand 2.5s ease-out infinite;
 }
-.reveal {
-  opacity: 0; transform: translateY(38px);
-  transition: opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 0.85s cubic-bezier(0.4,0,0.2,1);
+.lock-ring:nth-child(2) { animation-delay: 0.8s; }
+.lock-ring:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes ringExpand {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
-.reveal.visible { opacity: 1; transform: none; }
-.d1 { transition-delay: 0.1s; }
-.d2 { transition-delay: 0.22s; }
-.d3 { transition-delay: 0.34s; }
 
-/* ── SECTION ── */
-.section { padding: 112px 24px; max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
-
-.section-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--purple-light);
-  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
+/* ── TEXT ── */
+.error-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  animation: fadeUp 0.7s 0.15s ease both;
 }
-.section-label::before { content: ''; width: 30px; height: 1px; background: linear-gradient(to right, var(--purple), transparent); }
 
-.section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4.5vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 18px; }
-
-.section-sub { font-size: 15px; color: var(--text2); max-width: 520px; line-height: 1.78; margin-bottom: 64px; font-weight: 400; }
-
-/* ── DIVIDER ── */
-.divider { height: 1px; background: linear-gradient(to right, transparent, rgba(124,58,237,0.3), rgba(6,182,212,0.2), transparent); margin: 0 48px; }
-
-/* ── DIAGRAM VIEWER ── */
-.diagram-viewer {
-  border-radius: 22px; border: 1px solid var(--border); overflow: hidden;
-  background: var(--surface); cursor: zoom-in; position: relative;
-  max-width: 580px; margin: 0 auto 64px;
-  box-shadow: 0 0 60px rgba(124,58,237,0.1), 0 24px 64px rgba(0,0,0,0.45);
-  transition: var(--transition);
+.error-sub {
+  font-size: 15px;
+  color: var(--text2);
+  max-width: 420px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s 0.22s ease both;
 }
-.diagram-viewer:hover { box-shadow: 0 0 100px rgba(124,58,237,0.2), 0 28px 80px rgba(0,0,0,0.55); transform: translateY(-4px); }
-.diagram-viewer img { width: 100%; display: block; }
-.zoom-hint {
-  position: absolute; bottom: 14px; right: 14px;
-  background: rgba(0,0,0,0.78); backdrop-filter: blur(12px);
-  border: 1px solid var(--border); border-radius: 8px; padding: 5px 13px;
-  font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text2);
-  opacity: 0; transition: opacity 0.25s; pointer-events: none;
+
+/* ── CODE TAG ── */
+.code-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--purple-light);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px 10px;
 }
-.diagram-viewer:hover .zoom-hint { opacity: 1; }
 
-/* ── ENC FLOW ── */
-.enc-flow { display: flex; flex-direction: column; }
-.enc-step { display: flex; align-items: stretch; gap: 20px; }
-.enc-line { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 36px; }
-.enc-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid; flex-shrink: 0; margin-top: 22px; position: relative; }
-.enc-dot::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: currentColor; opacity: 0.6; }
-.enc-connector { width: 2px; flex: 1; min-height: 20px; background: linear-gradient(to bottom, currentColor, transparent); opacity: 0.22; }
-.enc-box {
-  flex: 1; border-radius: 14px; border: 1px solid; padding: 22px 26px; margin-bottom: 14px;
-  transition: var(--transition); position: relative; overflow: hidden;
+/* ── BUTTONS ── */
+.error-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.7s 0.3s ease both;
 }
-.enc-box::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, currentColor, transparent); opacity: 0.04; }
-.enc-box:hover { transform: translateX(7px); }
-.enc-box-label { font-size: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; opacity: 0.6; }
-.enc-box-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-.enc-box-desc { font-size: 12px; color: var(--text2); font-family: 'JetBrains Mono', monospace; line-height: 1.65; }
-.layer-aes1 { border-color: rgba(124,58,237,0.35); color: #a78bfa; }
-.layer-aes1 .enc-dot { border-color: #7c3aed; color: rgba(124,58,237,0.5); }
-.layer-aes1 .enc-connector { color: #7c3aed; }
-.layer-aes2 { border-color: rgba(37,99,235,0.35); color: #60a5fa; }
-.layer-aes2 .enc-dot { border-color: #2563eb; color: rgba(37,99,235,0.5); }
-.layer-aes2 .enc-connector { color: #2563eb; }
-.layer-enc { border-color: rgba(6,255,165,0.35); color: var(--green); }
-.layer-enc .enc-dot { border-color: var(--green); color: rgba(6,255,165,0.4); }
 
-/* ── FEATURES ── */
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-.feat-card {
-  background: var(--surface); border: 1px solid var(--border2); border-radius: 18px;
-  padding: 30px; transition: var(--transition); position: relative; overflow: hidden;
-}
-.feat-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--purple-glow2) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; }
-.feat-card:hover { border-color: var(--border); transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
-.feat-card:hover::before { opacity: 1; }
-.feat-icon { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 18px; background: var(--surface2); border: 1px solid var(--border); position: relative; z-index: 1; }
-.feat-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; }
-.feat-desc { font-size: 13px; color: var(--text2); line-height: 1.72; position: relative; z-index: 1; }
 
-/* ── SECURITY ── */
-.security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.sec-card { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; padding: 26px; display: flex; gap: 18px; align-items: flex-start; transition: var(--transition); }
-.sec-card:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-.sec-icon { width: 38px; height: 38px; border-radius: 11px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-.sec-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-.sec-desc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: 'JetBrains Mono', monospace; }
-
-/* ── PRICING ── */
-.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
-.price-card { border-radius: 22px; padding: 36px; border: 1px solid var(--border2); background: var(--surface); position: relative; transition: var(--transition); }
-.price-card:hover { transform: translateY(-6px); }
-.price-card.featured { border-color: var(--purple); background: linear-gradient(145deg, rgba(124,58,237,0.12), var(--surface)); box-shadow: 0 0 70px rgba(124,58,237,0.15), 0 0 0 1px rgba(124,58,237,0.2); }
-.price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--purple), #5b21b6); color: #fff; font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; padding: 5px 18px; border-radius: 100px; white-space: nowrap; box-shadow: 0 4px 20px rgba(124,58,237,0.45); }
-.price-tier { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
-.price-name { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 24px; }
-.price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; margin-bottom: 5px; letter-spacing: 0.02em; }
-.price-amount span { font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--text2); font-weight: 400; letter-spacing: 0; }
-.price-note { font-size: 12px; color: var(--text3); font-family: 'JetBrains Mono', monospace; margin-bottom: 28px; }
-.price-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 30px; }
-.price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text2); line-height: 1.55; }
-.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
-
-/* ── CTA ── */
-.cta-section { text-align: center; padding: 100px 24px; position: relative; z-index: 1; }
-.cta-box {
-  max-width: 720px; margin: 0 auto; background: var(--surface);
-  border: 1px solid var(--border); border-radius: 28px; padding: 76px 60px;
-  position: relative; overflow: hidden;
-}
-.cta-box::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 450px; height: 450px; background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%); pointer-events: none; }
-.cta-box::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(124,58,237,0.04), transparent, rgba(6,182,212,0.03)); pointer-events: none; }
-.cta-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4.5vw, 48px); font-weight: 800; line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.025em; position: relative; z-index: 1; }
-.cta-sub { font-size: 15px; color: var(--text2); line-height: 1.78; margin-bottom: 44px; position: relative; z-index: 1; }
-.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; margin-bottom: 28px; }
-
-.social-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-.social-pill {
-  display: flex; align-items: center; gap: 7px; padding: 8px 18px;
-  border-radius: 100px; border: 1px solid var(--border2); background: var(--surface2);
-  color: var(--text2); font-size: 12px; font-family: 'JetBrains Mono', monospace;
-  text-decoration: none; transition: var(--transition);
-}
-.social-pill i { font-size: 13px; }
-.social-pill.fb:hover { border-color: #1877f2; color: #1877f2; background: rgba(24,119,242,0.08); }
-.social-pill.ig:hover { border-color: #e1306c; color: #e1306c; background: rgba(225,48,108,0.08); }
-.social-pill.em:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-glow); }
-
-.cta-note { margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--border2); font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace; line-height: 1.9; position: relative; z-index: 1; }
-.cta-note strong { color: var(--purple-light); }
 
 /* ── FOOTER ── */
-.footer { border-top: 1px solid var(--border2); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; color: var(--text3); font-size: 12px; font-family: 'JetBrains Mono', monospace; position: relative; z-index: 1; }
+.footer {
+  border-top: 1px solid var(--border2);
+  padding: 20px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  color: var(--text3); font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative; z-index: 1;
+}
 .footer-brand { display: flex; align-items: center; gap: 8px; color: var(--text2); }
 .footer-brand em { color: var(--purple-light); font-style: normal; font-weight: 700; }
 
-.tag { display: inline-block; padding: 2px 9px; border-radius: 100px; background: var(--surface2); border: 1px solid var(--border2); font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--text3); }
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* ── ZOOM MODAL ── */
-.zoom-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); backdrop-filter: blur(24px); align-items: center; justify-content: center; padding: 24px; }
-.zoom-modal.open { display: flex; animation: modalIn 0.25s ease; }
-@keyframes modalIn { from { opacity: 0; } to { opacity: 1; } }
-.zoom-modal img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 16px; border: 1px solid var(--border); cursor: zoom-out; box-shadow: 0 0 100px rgba(124,58,237,0.2); }
-.zoom-close { position: absolute; top: 24px; right: 24px; width: 42px; height: 42px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 1; }
-.zoom-close:hover { background: var(--purple-glow); border-color: var(--purple); }
-
-/* ── RESPONSIVE ── */
+/* ── MOBILE ── */
 @media (max-width: 768px) {
   .nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .stats { flex-direction: column; }
-  .stat { border-right: none; border-bottom: 1px solid var(--border); }
-  .stat:last-child { border-bottom: none; }
-  .security-grid { grid-template-columns: 1fr; }
-  .footer { flex-direction: column; gap: 14px; text-align: center; }
-  .cta-box { padding: 44px 24px; }
-  .section { padding: 80px 20px; }
-  .divider { margin: 0 20px; }
+  .footer { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
+  body { overflow: auto; }
 }
-
-/* ── ORDER FORM MODAL ── */
-.form-overlay {
-  display: none; position: fixed; inset: 0; z-index: 9998;
-  background: rgba(0,0,0,0.88); backdrop-filter: blur(24px);
-  align-items: center; justify-content: center; padding: 20px;
-}
-.form-overlay.open { display: flex; animation: modalIn 0.25s ease; }
-
-.form-modal {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 44px 40px;
-  max-width: 520px; width: 100%;
-  position: relative;
-  max-height: 90vh; overflow-y: auto;
-  box-shadow: 0 0 80px rgba(124,58,237,0.2);
-}
-
-.form-modal::-webkit-scrollbar { width: 4px; }
-.form-modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 100px; }
-
-.form-close {
-  position: absolute; top: 16px; right: 16px;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--surface2); border: 1px solid var(--border2);
-  color: var(--text2); font-size: 16px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: var(--transition);
-}
-.form-close:hover { background: var(--purple-glow); border-color: var(--purple); color: var(--text); }
-
-.form-plan-badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 5px 14px; border-radius: 100px;
-  border: 1px solid var(--border);
-  background: var(--purple-glow2);
-  color: var(--purple-light);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-}
-
-.form-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 24px; font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-
-.form-sub {
-  font-size: 13px; color: var(--text2);
-  line-height: 1.6; margin-bottom: 32px;
-}
-
-.form-group {
-  margin-bottom: 18px;
-}
-
-.form-label {
-  display: block;
-  font-size: 12px; font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--text2); letter-spacing: 0.06em;
-  text-transform: uppercase; margin-bottom: 8px;
-}
-
-.form-input {
-  width: 100%; padding: 13px 16px;
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-radius: 12px;
-  color: var(--text);
-  font-family: 'Outfit', sans-serif; font-size: 14px;
-  transition: var(--transition); outline: none;
-}
-.form-input:focus {
-  border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
-}
-.form-input::placeholder { color: var(--text3); }
-
-select.form-input { cursor: pointer; }
-select.form-input option { background: var(--surface2); }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-.form-submit {
-  width: 100%; margin-top: 8px;
-  padding: 15px; border-radius: 12px;
-  background: linear-gradient(135deg, var(--purple) 0%, #5b21b6 100%);
-  color: #fff; font-family: 'Outfit', sans-serif;
-  font-size: 15px; font-weight: 700;
-  border: none; cursor: pointer; transition: var(--transition);
-  box-shadow: 0 4px 24px rgba(124,58,237,0.4);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,58,237,0.55); }
-.form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-.form-success {
-  display: none; text-align: center; padding: 20px 0;
-}
-.form-success-icon { font-size: 52px; margin-bottom: 16px; }
-.form-success-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--green); }
-.form-success-sub { font-size: 14px; color: var(--text2); line-height: 1.65; }
-
-.form-error {
-  background: rgba(255,71,87,0.1); border: 1px solid rgba(255,71,87,0.3);
-  border-radius: 10px; padding: 10px 14px;
-  font-size: 12px; color: #ff7070;
-  font-family: 'JetBrains Mono', monospace;
-  margin-top: 12px; display: none;
-}
-
-@media (max-width: 560px) {
-  .form-modal { padding: 32px 20px; }
-  .form-row { grid-template-columns: 1fr; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- AMBIENT ORBS -->
+<!-- ORBS -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 
-<!-- ZOOM MODAL -->
-<div class="zoom-modal" id="zoomModal" onclick="closeZoom()">
-  <button class="zoom-close" onclick="closeZoom()">✕</button>
-  <img id="zoomImg" src="" alt="">
-</div>
-
 <!-- NAV -->
-<nav class="nav" id="mainNav">
-  <a href="#" class="nav-logo">
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
     <div class="logo-icon">⚡</div>
     HTML <em>Vault</em>
   </a>
-
-  <div class="nav-links">
-    <a href="#how" class="nav-link" data-en="Architecture" data-bn="আর্কিটেকচার">Architecture</a>
-    <a href="#features" class="nav-link" data-en="Features" data-bn="ফিচার">Features</a>
-    <a href="#security" class="nav-link" data-en="Security" data-bn="নিরাপত্তা">Security</a>
-    <a href="#pricing" class="nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a>
-  </div>
-
-  <div class="nav-right">
-    <div class="lang-pill">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('bn')">বাং</button>
-    </div>
-    <a href="#contact" class="btn-primary" style="padding:9px 22px;font-size:13px;">
-      <span data-en="Get Started" data-bn="শুরু করুন">Get Started</span>
-    </a>
-  </div>
+  <a href="index.html" class="btn-primary">
+    ← Go Home
+  </a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
+<!-- MAIN -->
+<main class="main">
 
-  <div class="badge">
-    <div class="badge-dot"></div>
-    <span data-en="Triple-Layer Encrypted • Auto-Update • Device Lock" data-bn="ট্রিপল-লেয়ার এনক্রিপ্টেড • অটো-আপডেট • ডিভাইস লক">Triple-Layer Encrypted • Auto-Update • Device Lock</span>
+  <div class="lock-wrap">
+    <div class="lock-ring"></div>
+    <div class="lock-ring"></div>
+    <div class="lock-ring"></div>
+    <div class="lock-icon">🔐</div>
   </div>
 
-  <h1 class="hero-title">
-    <span data-en="Your Code." data-bn="তোমার কোড।">Your Code.</span><br>
-    <span class="grad" data-en="Unbreakable." data-bn="অভেদ্য।">Unbreakable.</span>
-  </h1>
+  <div class="error-code">404</div>
 
-  <p class="hero-sub" data-en="Convert any HTML or Python project into a secure desktop EXE. Real source code stays encrypted in the backend — decoded only when the app runs. Update from anywhere, instantly." data-bn="যেকোনো HTML বা Python প্রজেক্টকে নিরাপদ desktop EXE-এ রূপান্তর করুন। আসল source code backend-এ encrypted থাকে — app চালু হলেই decode হয়। যেকোনো জায়গা থেকে আপডেট করুন, তাৎক্ষণিকভাবে।">
-    Convert any HTML or Python project into a secure desktop EXE. Real source code stays encrypted in the backend — decoded only when the app runs. Update from anywhere, instantly.
+  <h1 class="error-title">Page Not Found</h1>
+
+  <p class="error-sub">
+    This page doesn't exist or has been moved.
+    Your source code is still safe though —
+    <span class="code-tag">triple-layer encrypted</span> as always.
   </p>
 
-  <div class="hero-ctas">
-    <a href="#contact" class="btn-primary">
-      <span data-en="Get Started" data-bn="শুরু করুন">Get Started</span> →
+  <div class="error-btns">
+    <a href="index.html" class="btn-primary">
+      ← Back to Home
     </a>
-    <a href="#how" class="btn-secondary">
-      <span data-en="See How It Works" data-bn="কীভাবে কাজ করে">See How It Works</span>
+    <a href="https://html-vault-landing-page.vercel.app/index.html#pricing" class="btn-secondary">
+      Contact Us
     </a>
   </div>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">2<span class="accent">²⁵⁶</span></div>
-      <div class="stat-label" data-en="COMBINATIONS TO CRACK" data-bn="ক্র্যাক করার সংখ্যা">COMBINATIONS TO CRACK</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num"><span class="accent">3</span> Layers</div>
-      <div class="stat-label" data-en="ENCRYPTION DEPTH" data-bn="এনক্রিপশন গভীরতা">ENCRYPTION DEPTH</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num"><span class="accent">0</span>ms</div>
-      <div class="stat-label" data-en="CODE ON CLIENT DISK" data-bn="ক্লায়েন্ট ডিস্কে কোড">CODE ON CLIENT DISK</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num"><span class="accent">∞</span></div>
-      <div class="stat-label" data-en="UPDATES, ONE EXE" data-bn="আপডেট, একটি EXE">UPDATES, ONE EXE</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- HOW IT WORKS -->
-<section class="section" id="how">
-  <div class="reveal">
-    <div class="section-label" data-en="ARCHITECTURE" data-bn="আর্কিটেকচার">ARCHITECTURE</div>
-    <h2 class="section-title" data-en="How The Encryption Works" data-bn="এনক্রিপশন কীভাবে কাজ করে">How The Encryption Works</h2>
-    <p class="section-sub" data-en="Your system diagram — click to zoom in for full details." data-bn="আপনার system diagram — পুরো বিবরণের জন্য ক্লিক করুন।">Your system diagram — click to zoom in for full details.</p>
-  </div>
-
-  <!-- Diagram with dummy base64 — replace src with your real base64 -->
-  <div class="reveal d1">
-    <div class="diagram-viewer" onclick="openZoom()">
-      <img id="uploadedImg"
-      <img src="Encryption Works.png">
-      <div class="zoom-hint">🔍 <span data-en="Click to zoom" data-bn="জুম করুন">Click to zoom</span></div>
-    </div>
-  </div>
-
-  <!-- ENC FLOW -->
-  <div class="reveal d2">
-    <div class="enc-flow">
-      <div class="enc-step layer-aes1">
-        <div class="enc-line">
-          <div class="enc-dot" style="border-color:#7c3aed;color:rgba(124,58,237,0.5)"></div>
-          <div class="enc-connector" style="color:#7c3aed"></div>
-        </div>
-        <div class="enc-box layer-aes1">
-          <div class="enc-box-label">Layer 1</div>
-          <div class="enc-box-title">AES-256-GCM Encryption</div>
-          <div class="enc-box-desc" data-en="Raw source code wrapped with KEY 1 — stored server-side only" data-bn="Raw source code KEY 1 দিয়ে wrap করা — শুধু server-এ stored">Raw source code wrapped with KEY 1 — stored server-side only</div>
-        </div>
-      </div>
-      <div class="enc-step layer-aes2">
-        <div class="enc-line">
-          <div class="enc-dot" style="border-color:#2563eb;color:rgba(37,99,235,0.5)"></div>
-          <div class="enc-connector" style="color:#2563eb"></div>
-        </div>
-        <div class="enc-box layer-aes2">
-          <div class="enc-box-label">Layer 2</div>
-          <div class="enc-box-title">AES-256-GCM Encryption</div>
-          <div class="enc-box-desc" data-en="Layer 1 output wrapped again with KEY 2 — completely separate key" data-bn="Layer 1 output আবার KEY 2 দিয়ে wrap — সম্পূর্ণ আলাদা key">Layer 1 output wrapped again with KEY 2 — completely separate key</div>
-        </div>
-      </div>
-      <div class="enc-step layer-enc">
-        <div class="enc-line">
-          <div class="enc-dot" style="border-color:#06ffa5;color:rgba(6,255,165,0.4)"></div>
-        </div>
-        <div class="enc-box layer-enc">
-          <div class="enc-box-label">Layer 3 — My Custom ENC</div>
-          <div class="enc-box-title">Custom Encoding Camouflage</div>
-          <div class="enc-box-desc" data-en="Final layer scrambles AES output using a secret encoding table — attacker sees this first and has no idea what it is" data-bn="Final layer AES output-কে secret encoding table দিয়ে scramble করে — attacker প্রথমে এটা দেখে, কিছুই বোঝে না">Final layer scrambles AES output using a secret encoding table — attacker sees this first and has no idea what it is</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- FEATURES -->
-<section class="section" id="features">
-  <div class="reveal">
-    <div class="section-label" data-en="FEATURES" data-bn="ফিচারসমূহ">FEATURES</div>
-    <h2 class="section-title" data-en="Everything You Need" data-bn="আপনার যা দরকার সব">Everything You Need</h2>
-    <p class="section-sub" data-en="Built for software companies and developers who need to protect and deliver their apps professionally." data-bn="Software company এবং developer-দের জন্য তৈরি।">Built for software companies and developers who need to protect and deliver their apps professionally.</p>
-  </div>
-
-  <div class="features-grid reveal d1">
-    <div class="feat-card">
-      <div class="feat-icon">🔐</div>
-      <div class="feat-title" data-en="Triple-Layer Encryption" data-bn="ট্রিপল-লেয়ার এনক্রিপশন">Triple-Layer Encryption</div>
-      <div class="feat-desc" data-en="Double AES-256-GCM plus custom encoding. All three keys live server-side only. Mathematically uncrackable." data-bn="Double AES-256-GCM এবং custom encoding। তিনটা key শুধু server-এ। Mathematically অভেদ্য।">Double AES-256-GCM plus custom encoding. All three keys live server-side only. Mathematically uncrackable.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📱</div>
-      <div class="feat-title" data-en="Device Lock" data-bn="ডিভাইস লক">Device Lock</div>
-      <div class="feat-desc" data-en="Hardware fingerprinting binds the launcher to specific approved machines. Copied EXE files simply don't work elsewhere." data-bn="Hardware fingerprinting launcher-কে specific approved machine-এ bind করে।">Hardware fingerprinting binds the launcher to specific approved machines. Copied EXE files simply don't work elsewhere.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">⚡</div>
-      <div class="feat-title" data-en="Instant Updates" data-bn="তাৎক্ষণিক আপডেট">Instant Updates</div>
-      <div class="feat-desc" data-en="Change your code from the backend. All running apps silently receive the update within 60 seconds. No new EXE needed." data-bn="Backend থেকে code পরিবর্তন করুন। সব running app 60 সেকেন্ডের মধ্যে update পাবে।">Change your code from the backend. All running apps silently receive the update within 60 seconds. No new EXE needed.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🗂️</div>
-      <div class="feat-title" data-en="Full Project Support" data-bn="পূর্ণ প্রজেক্ট সাপোর্ট">Full Project Support</div>
-      <div class="feat-desc" data-en="Upload entire project folders — HTML, CSS, JS, images, assets. Multi-file projects work perfectly." data-bn="পুরো project folder আপলোড করুন — HTML, CSS, JS, image, assets।">Upload entire project folders — HTML, CSS, JS, images, assets. Multi-file projects work perfectly.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🐍</div>
-      <div class="feat-title" data-en="HTML + Python Support" data-bn="HTML + Python সাপোর্ট">HTML + Python Support</div>
-      <div class="feat-desc" data-en="Protect and deliver both HTML web apps and Python desktop applications using the same encryption system." data-bn="HTML web app এবং Python desktop application উভয়ই একই encryption system দিয়ে।">Protect and deliver both HTML web apps and Python desktop applications using the same encryption system.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">✏️</div>
-      <div class="feat-title" data-en="Client Editor Portal" data-bn="ক্লায়েন্ট এডিটর পোর্টাল">Client Editor Portal</div>
-      <div class="feat-desc" data-en="Give clients a secure link to edit only their own code. Changes save directly to backend. You stay in control." data-bn="Client-কে শুধু তাদের নিজের code edit করার secure link দিন।">Give clients a secure link to edit only their own code. Changes save directly to backend. You stay in control.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🔔</div>
-      <div class="feat-title" data-en="Backend Popup System" data-bn="ব্যাকএন্ড পপআপ সিস্টেম">Backend Popup System</div>
-      <div class="feat-desc" data-en="Force popups, one-time notices, or repeat interval popups — all controlled from backend without updating the EXE." data-bn="Force popup, one-time notice, বা repeat interval popup — সব backend থেকে EXE আপডেট ছাড়াই।">Force popups, one-time notices, or repeat interval popups — all controlled from backend without updating the EXE.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🛡️</div>
-      <div class="feat-title" data-en="Brute Force Protection" data-bn="ব্রুট ফোর্স প্রোটেকশন">Brute Force Protection</div>
-      <div class="feat-desc" data-en="IP-based lockout after 5 failed attempts. KV-backed persistence survives worker restarts." data-bn="5টি ব্যর্থ প্রচেষ্টার পরে IP-based lockout। KV-backed persistence worker restart-এ টিকে থাকে।">IP-based lockout after 5 failed attempts. KV-backed persistence survives worker restarts.</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SECURITY -->
-<section class="section" id="security">
-  <div class="reveal">
-    <div class="section-label" data-en="SECURITY" data-bn="নিরাপত্তা">SECURITY</div>
-    <h2 class="section-title" data-en="Why It's Unbreakable" data-bn="কেন এটা অভেদ্য">Why It's Unbreakable</h2>
-    <p class="section-sub" data-en="Every layer is designed to stop attackers cold — even with physical access to the machine." data-bn="প্রতিটি layer attacker-দের থামাতে ডিজাইন করা হয়েছে।">Every layer is designed to stop attackers cold — even with physical access to the machine.</p>
-  </div>
-
-  <div class="security-grid reveal d1">
-    <div class="sec-card">
-      <div class="sec-icon">🔑</div>
-      <div>
-        <div class="sec-title" data-en="Keys Never Leave Server" data-bn="Key কখনো Server ছাড়ে না">Keys Never Leave Server</div>
-        <div class="sec-desc" data-en="All three encryption keys live in Cloudflare environment variables. Never exposed in responses or logs." data-bn="তিনটা encryption key Cloudflare environment variables-এ। কখনো response বা log-এ expose হয় না।">All three encryption keys live in Cloudflare environment variables. Never exposed in responses or logs.</div>
-      </div>
-    </div>
-    <div class="sec-card">
-      <div class="sec-icon">⏱️</div>
-      <div>
-        <div class="sec-title" data-en="Replay Attack Blocked" data-bn="Replay Attack ব্লক">Replay Attack Blocked</div>
-        <div class="sec-desc" data-en="HMAC-signed nonce + timestamp tokens. One-time use only. 60-second expiry window." data-bn="HMAC-signed nonce + timestamp token। একবার ব্যবহার। 60 সেকেন্ড expiry।">HMAC-signed nonce + timestamp tokens. One-time use only. 60-second expiry window.</div>
-      </div>
-    </div>
-    <div class="sec-card">
-      <div class="sec-icon">💻</div>
-      <div>
-        <div class="sec-title" data-en="Hardware Fingerprinting" data-bn="Hardware Fingerprinting">Hardware Fingerprinting</div>
-        <div class="sec-desc" data-en="BIOS serial, UUID, MAC, CPU, RAM — SHA256 hashed. Impossible to spoof without exact values." data-bn="BIOS serial, UUID, MAC, CPU, RAM — SHA256 hashed। Exact values ছাড়া spoof অসম্ভব।">BIOS serial, UUID, MAC, CPU, RAM — SHA256 hashed. Impossible to spoof without exact values.</div>
-      </div>
-    </div>
-    <div class="sec-card">
-      <div class="sec-icon">🚫</div>
-      <div>
-        <div class="sec-title" data-en="Raw Code Never Exposed" data-bn="Raw Code কখনো Exposed না">Raw Code Never Exposed</div>
-        <div class="sec-desc" data-en="Decryption happens server-side. Client receives rendered output only. Source stays protected." data-bn="Decryption server-side-এ হয়। Client শুধু rendered output পায়।">Decryption happens server-side. Client receives rendered output only. Source stays protected.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PRICING -->
-<section class="section" id="pricing">
-  <div class="reveal">
-    <div class="section-label" data-en="PRICING" data-bn="মূল্য">PRICING</div>
-    <h2 class="section-title" data-en="Simple, Fair Pricing" data-bn="সহজ, ন্যায্য মূল্য">Simple, Fair Pricing</h2>
-    <p class="section-sub" data-en="Start small, scale as you grow. All plans include the full encryption system." data-bn="ছোট শুরু করুন, বাড়ার সাথে scale করুন। সব plan-এ পূর্ণ encryption system।">Start small, scale as you grow. All plans include the full encryption system.</p>
-  </div>
-
-  <div class="pricing-grid reveal d1">
-
-    <!-- BASIC — no admin panel -->
-    <div class="price-card">
-      <div class="price-tier" data-en="FOR BUSINESSES" data-bn="ব্যবসার জন্য">FOR BUSINESSES</div>
-      <div class="price-name" data-en="Basic" data-bn="বেসিক">Basic</div>
-      <div class="price-amount">$100 <span data-en="setup" data-bn="সেটআপ">setup</span></div>
-      <div class="price-note">+ $20 / <span data-en="month" data-bn="মাস">month</span></div>
-      <ul class="price-features">
-        <li data-en="1 app, up to 5 devices" data-bn="১টি app, ৫টি পর্যন্ত device">1 app, up to 5 devices</li>
-        <li data-en="Auto-update system" data-bn="Auto-update system">Auto-update system</li>
-        <li data-en="You manage your own updates" data-bn="আপনি update manage করবেন">You manage your own updates</li>
-        <li data-en="Triple-layer encryption" data-bn="ট্রিপল-লেয়ার এনক্রিপশন">Triple-layer encryption</li>
-        <li data-en="Device lock & fingerprinting" data-bn="Device lock ও fingerprinting">Device lock & fingerprinting</li>
-      </ul>
-      <button onclick="openForm('Basic')" class="btn-secondary" style="width:100%;justify-content:center;">
-        <span data-en="Get Started" data-bn="শুরু করুন">Get Started</span>
-      </button>
-    </div>
-
-    <!-- DEVELOPER — featured -->
-    <div class="price-card featured">
-      <div class="price-badge" data-en="MOST POPULAR" data-bn="সবচেয়ে জনপ্রিয়">MOST POPULAR</div>
-      <div class="price-tier" data-en="FOR AGENCIES & DEVS" data-bn="এজেন্সি ও ডেভেলপারদের জন্য">FOR AGENCIES & DEVS</div>
-      <div class="price-name" data-en="Developer" data-bn="ডেভেলপার">Developer</div>
-      <div class="price-amount">$200 <span data-en="setup" data-bn="সেটআপ">setup</span></div>
-      <div class="price-note">+ $40/ <span data-en="month" data-bn="মাস">month</span></div>
-      <ul class="price-features">
-        <li data-en="Up to 3 apps, unlimited devices" data-bn="৩টি পর্যন্ত app, unlimited device">Up to 3 apps, unlimited devices</li>
-        <li data-en="Admin control panel" data-bn="Admin control panel">Admin control panel</li>
-        <li data-en="Client editor portal" data-bn="Client editor portal">Client editor portal</li>
-        <li data-en="Auto-update system" data-bn="Auto-update system">Auto-update system</li>
-        <li data-en="Full admin control" data-bn="সম্পূর্ণ admin control">Full admin control</li>
-        <li data-en="Priority support" data-bn="Priority support">Priority support</li>
-      </ul>
-      <button onclick="openForm('Developer')" class="btn-primary" style="width:100%;justify-content:center;">
-        <span data-en="Get Started" data-bn="শুরু করুন">Get Started</span>
-      </button>
-    </div>
-
-    <!-- ENTERPRISE -->
-    <div class="price-card">
-      <div class="price-tier" data-en="FOR ENTERPRISES" data-bn="এন্টারপ্রাইজের জন্য">FOR ENTERPRISES</div>
-      <div class="price-name" data-en="Enterprise" data-bn="এন্টারপ্রাইজ">Enterprise</div>
-      <div class="price-amount" style="font-size:38px;" data-en="Custom" data-bn="কাস্টম">Custom</div>
-      <div class="price-note" data-en="Contact for pricing" data-bn="মূল্যের জন্য যোগাযোগ করুন">Contact for pricing</div>
-      <ul class="price-features">
-        <li data-en="Unlimited apps & devices" data-bn="Unlimited app ও device">Unlimited apps & devices</li>
-        <li data-en="Admin control panel" data-bn="Admin control panel">Admin control panel</li>
-        <li data-en="Custom domain setup" data-bn="Custom domain setup">Custom domain setup</li>
-        <li data-en="White-label option" data-bn="White-label option">White-label option</li>
-        <li data-en="SLA & dedicated support" data-bn="SLA ও dedicated support">SLA & dedicated support</li>
-        <li data-en="Custom feature development" data-bn="Custom feature development">Custom feature development</li>
-      </ul>
-      <button onclick="openForm('Enterprise')" class="btn-secondary" style="width:100%;justify-content:center;">
-        <span data-en="Contact Us" data-bn="যোগাযোগ করুন">Contact Us</span>
-      </button>
-    </div>
-  </div>
-</section>
 
 
-<div class="divider"></div>
-
-<!-- DEV LINK -->
-<section class="section" id="demo" style="text-align:center;padding-top:72px;padding-bottom:72px;">
-  <div class="reveal">
-    <div class="section-label" style="justify-content:center;" data-en="LIVE DEMO" data-bn="লাইভ ডেমো">LIVE DEMO</div>
-    <h2 class="section-title" data-en="Try It Before You Buy" data-bn="কেনার আগে ব্যবহার করুন">Try It Before You Buy</h2>
-    <p class="section-sub" style="margin:0 auto 36px;" data-en="Experience HTML Vault live. See exactly how the encryption, device lock, and auto-update system works." data-bn="HTML Vault সরাসরি অনুভব করুন। এনক্রিপশন, ডিভাইস লক এবং অটো-আপডেট সিস্টেম দেখুন।">Experience HTML Vault live. See exactly how the encryption, device lock, and auto-update system works.</p>
-    <a href="YOUR_DEMO_LINK_HERE" target="_blank" class="btn-primary" style="display:inline-flex;font-size:16px;padding:16px 40px;">
-      🚀 <span data-en="Open Live Demo" data-bn="লাইভ ডেমো খুলুন">Open Live Demo</span>
-    </a>
-    <p style="margin-top:16px;font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;" data-en="Demo is read-only. No signup required." data-bn="Demo শুধু দেখার জন্য। Sign up লাগবে না।">Demo is read-only. No signup required.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CTA / CONTACT -->
-<section class="cta-section" id="contact">
-  <div class="cta-box reveal">
-    <h2 class="cta-title" data-en="Ready to Protect Your App?" data-bn="আপনার App protect করতে প্রস্তুত?">Ready to Protect Your App?</h2>
-    <p class="cta-sub" data-en="Message for a free demo. We'll show you exactly how HTML Vault works with your project." data-bn="Free demo-র জন্য message করুন। আমরা দেখাবো HTML Vault আপনার project-এ কীভাবে কাজ করে।">Message for a free demo. We'll show you exactly how HTML Vault works with your project.</p>
-
-    <div class="cta-buttons">
-      <a href="https://facebook.com/kakarotbd" target="_blank" class="btn-primary">
-        <i class="fab fa-facebook"></i>
-        <span data-en="Message on Facebook" data-bn="Facebook-এ Message করুন">Message on Facebook</span>
-      </a>
-      <a href="mailto:rafin.goku@gmail.com" class="btn-secondary">
-        <i class="fas fa-envelope"></i>
-        <span data-en="Send Email" data-bn="Email পাঠান">Send Email</span>
-      </a>
-    </div>
-
-    <div class="social-row">
-      <a href="https://facebook.com/kakarotbd" target="_blank" class="social-pill fb">
-        <i class="fab fa-facebook-f"></i> /kakarotbd
-      </a>
-      <a href="https://instagram.com/kakarotbd" target="_blank" class="social-pill ig">
-        <i class="fab fa-instagram"></i> @kakarotbd
-      </a>
-      <a href="mailto:rafin.goku@gmail.com" class="social-pill em">
-        <i class="fas fa-at"></i> rafin.goku@gmail.com
-      </a>
-    </div>
-
-    <div class="cta-note">
-      <span data-en="Built by a 17-year-old self-taught developer from Comilla, Bangladesh 🇧🇩" data-bn="কুমিল্লা, বাংলাদেশের একজন ১৭ বছরের self-taught developer দ্বারা নির্মিত 🇧🇩">Built by a 17-year-old self-taught developer from Comilla, Bangladesh 🇧🇩</span>
-      <br>
-      <strong data-en="Have a restaurant, clothing store, or agency? We build Electron-based desktop software. MSG us." data-bn="রেস্তোরাঁ, কাপড়ের দোকান বা এজেন্সি আছে? আমরা Electron-based desktop software বানাই। MSG করুন।">Have a restaurant, clothing store, or agency? We build Electron-based desktop software. MSG us.</strong>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-brand">
-    ⚡ HTML <em>Vault</em>
-    <span class="tag">© 2026</span>
-  </div>
-  <div data-en="Triple-layer encrypted. Globally unique. Yours." data-bn="ট্রিপল-লেয়ার এনক্রিপ্টেড। বিশ্বে অনন্য। তোমার।">Triple-layer encrypted. Globally unique. Yours.</div>
+  <div class="footer-brand">⚡ HTML <em>Vault</em></div>
+  <div>Triple-layer encrypted. Globally unique. Yours.</div>
 </footer>
-
-<script>
-// ── LANGUAGE ──
-let currentLang = 'en';
-function setLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
-  });
-}
-
-// ── NAV SCROLL ──
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
-
-// ── SCROLL REVEAL ──
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// ── ZOOM ──
-function openZoom() {
-  const img = document.getElementById('uploadedImg');
-  document.getElementById('zoomImg').src = img.src;
-  document.getElementById('zoomModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeZoom() {
-  document.getElementById('zoomModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
-
-// ── NAV ACTIVE HIGHLIGHT ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
-  navLinks.forEach(l => {
-    l.style.color = l.getAttribute('href') === `#${cur}` ? 'var(--text)' : '';
-    l.style.background = l.getAttribute('href') === `#${cur}` ? 'var(--border2)' : '';
-  });
-}, { passive: true });
-</script>
-
-<!-- ORDER FORM MODAL -->
-<div class="form-overlay" id="formOverlay">
-  <div class="form-modal" id="formModal">
-    <button class="form-close" onclick="closeForm()">✕</button>
-
-    <!-- Form content -->
-    <div id="formContent">
-      <div class="form-plan-badge" id="formPlanBadge">⚡ Basic Plan</div>
-      <h2 class="form-title" data-en="Get Started" data-bn="শুরু করুন">Get Started</h2>
-      <p class="form-sub" data-en="Fill in your details and we'll get back to you within 24 hours." data-bn="আপনার তথ্য দিন, আমরা ২৪ ঘণ্টার মধ্যে যোগাযোগ করবো।">Fill in your details and we'll get back to you within 24 hours.</p>
-
-      <div class="form-group">
-        <label class="form-label" data-en="Full Name *" data-bn="পূর্ণ নাম *">Full Name *</label>
-        <input type="text" class="form-input" id="f_name" placeholder="John Doe" required>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" data-en="Company / Business Name" data-bn="কোম্পানি / ব্যবসার নাম">Company / Business Name</label>
-        <input type="text" class="form-input" id="f_company" placeholder="Acme Software Ltd.">
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" data-en="Email Address *" data-bn="ইমেইল *">Email Address *</label>
-          <input type="email" class="form-input" id="f_email" placeholder="you@company.com" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-en="Phone Number *" data-bn="ফোন নম্বর *">Phone Number *</label>
-          <input type="tel" class="form-input" id="f_phone" placeholder="+880 1700 000000" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" data-en="WhatsApp Number" data-bn="WhatsApp নম্বর">WhatsApp Number</label>
-        <input type="tel" class="form-input" id="f_whatsapp" placeholder="+880 1700 000000 (if different)">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" data-en="Best Time to Contact *" data-bn="যোগাযোগের সেরা সময় *">Best Time to Contact *</label>
-        <select class="form-input" id="f_time" required>
-          <option value="" disabled selected data-en="Select a time" data-bn="সময় বেছে নিন">Select a time</option>
-          <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
-          <option value="Afternoon (12PM - 5PM)">Afternoon (12PM - 5PM)</option>
-          <option value="Evening (5PM - 9PM)">Evening (5PM - 9PM)</option>
-          <option value="Anytime">Anytime</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" data-en="Message (optional)" data-bn="বার্তা (ঐচ্ছিক)">Message (optional)</label>
-        <textarea class="form-input" id="f_message" rows="3" placeholder="Tell us about your project..." style="resize:vertical;min-height:80px"></textarea>
-      </div>
-
-      <div class="form-error" id="formError"></div>
-
-      <button class="form-submit" id="formSubmitBtn" onclick="submitForm()">
-        <span id="submitText">🚀 Submit Request</span>
-      </button>
-
-      <p style="margin-top:14px;font-size:11px;color:var(--text3);text-align:center;font-family:'JetBrains Mono',monospace;" data-en="Your info is secure. We never share your data." data-bn="আপনার তথ্য সুরক্ষিত। আমরা কখনো শেয়ার করি না।">Your info is secure. We never share your data.</p>
-    </div>
-
-    <!-- Success state -->
-    <div class="form-success" id="formSuccess">
-      <div class="form-success-icon">✅</div>
-      <div class="form-success-title" data-en="Request Sent!" data-bn="অনুরোধ পাঠানো হয়েছে!">Request Sent!</div>
-      <p class="form-success-sub" data-en="We'll contact you within 24 hours. Check your email for confirmation." data-bn="আমরা ২৪ ঘণ্টার মধ্যে যোগাযোগ করবো।">We'll contact you within 24 hours. Check your email for confirmation.</p>
-      <button onclick="closeForm()" class="btn-primary" style="margin-top:24px;">Close</button>
-    </div>
-  </div>
-</div>
-
-<script>
-// ── FORM ──
-const WORKER_URL = 'https://crimson-fog-0b24.rafin-goku.workers.dev'; // তোমার worker URL দাও
-
-function openForm(plan) {
-  document.getElementById('formPlanBadge').textContent = '⚡ ' + plan + ' Plan';
-  document.getElementById('formContent').style.display = 'block';
-  document.getElementById('formSuccess').style.display = 'none';
-  document.getElementById('formError').style.display = 'none';
-  document.getElementById('formOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  // Store selected plan
-  document.getElementById('formModal').dataset.plan = plan;
-}
-
-function closeForm() {
-  document.getElementById('formOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('formOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeForm();
-});
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
-
-async function submitForm() {
-  const btn = document.getElementById('formSubmitBtn');
-  const errEl = document.getElementById('formError');
-  const plan = document.getElementById('formModal').dataset.plan || 'Unknown';
-
-  const name = document.getElementById('f_name').value.trim();
-  const email = document.getElementById('f_email').value.trim();
-  const phone = document.getElementById('f_phone').value.trim();
-  const time = document.getElementById('f_time').value;
-
-  // Validate
-  if (!name) { showErr('Please enter your full name.'); return; }
-  if (!email || !email.includes('@')) { showErr('Please enter a valid email address.'); return; }
-  if (!phone) { showErr('Please enter your phone number.'); return; }
-  if (!time) { showErr('Please select the best time to contact.'); return; }
-
-  const data = {
-    plan,
-    name,
-    company: document.getElementById('f_company').value.trim(),
-    email,
-    phone,
-    whatsapp: document.getElementById('f_whatsapp').value.trim(),
-    bestTime: time,
-    message: document.getElementById('f_message').value.trim(),
-    submittedAt: new Date().toISOString(),
-    source: 'landing-page',
-  };
-
-  btn.disabled = true;
-  document.getElementById('submitText').textContent = '⏳ Sending...';
-  errEl.style.display = 'none';
-
-  try {
-    const res = await fetch(WORKER_URL + '/api/inquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error || 'Server error');
-    // Success
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  } catch(e) {
-    showErr('Failed to send: ' + e.message + '. Please try messaging us directly on Facebook.');
-  } finally {
-    btn.disabled = false;
-    document.getElementById('submitText').textContent = '🚀 Submit Request';
-  }
-}
-
-function showErr(msg) {
-  const el = document.getElementById('formError');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-</script>
 
 </body>
 </html>
