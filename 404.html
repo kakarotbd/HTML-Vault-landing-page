@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — HTML Vault</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --bg: #03030a;
+  --surface: #0a0a18;
+  --surface2: #0f0f20;
+  --purple: #7c3aed;
+  --purple-light: #a78bfa;
+  --purple-glow: rgba(124,58,237,0.3);
+  --purple-glow2: rgba(124,58,237,0.10);
+  --cyan: #06b6d4;
+  --green: #06ffa5;
+  --text: #eeeef8;
+  --text2: #8a8aaa;
+  --text3: #44445a;
+  --border: rgba(124,58,237,0.22);
+  --border2: rgba(255,255,255,0.06);
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NOISE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.3;
+}
+
+/* ── ORBS ── */
+.orb {
+  position: fixed; border-radius: 50%; pointer-events: none;
+  filter: blur(90px); z-index: 0; animation: floatOrb 14s ease-in-out infinite;
+}
+.orb-1 { width:520px; height:520px; background:radial-gradient(circle,#7c3aed,transparent); top:-180px; left:-120px; opacity:.2; animation-delay:0s; }
+.orb-2 { width:420px; height:420px; background:radial-gradient(circle,#06b6d4,transparent); bottom:10%; right:-100px; opacity:.15; animation-delay:-5s; }
+.orb-3 { width:320px; height:320px; background:radial-gradient(circle,#06ffa5,transparent); top:55%; left:35%; opacity:.08; animation-delay:-9s; }
+
+@keyframes floatOrb {
+  0%,100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-50px) scale(1.06); }
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--purple-glow); border-radius: 100px; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px; height: 70px;
+  background: rgba(3,3,10,0.75);
+  backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid var(--border2);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800;
+  letter-spacing: 0.04em; color: var(--text); display: flex; align-items: center;
+  gap: 10px; text-decoration: none;
+}
+.logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 17px; box-shadow: 0 0 20px rgba(124,58,237,0.4);
+}
+.nav-logo em { color: var(--purple-light); font-style: normal; }
+
+.btn-primary {
+  padding: 9px 22px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--purple) 0%, #5b21b6 100%);
+  color: #fff; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+  border: none; cursor: pointer; transition: var(--transition); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,58,237,0.55); }
+
+.btn-secondary {
+  padding: 13px 28px; border-radius: 12px; border: 1px solid var(--border);
+  background: rgba(124,58,237,0.06); color: var(--text);
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: var(--transition); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { background: var(--purple-glow2); border-color: var(--purple); transform: translateY(-2px); }
+
+/* ── MAIN ── */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 100px 24px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 404 NUMBER ── */
+.error-code {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 22vw, 220px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0.04) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  user-select: none;
+  animation: fadeUp 0.7s ease both;
+}
+
+.error-code::before {
+  content: '404';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 45%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: blur(28px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* ── LOCK ICON ── */
+.lock-wrap {
+  position: relative;
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s 0.05s ease both;
+}
+
+.lock-icon {
+  width: 80px; height: 80px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(124,58,237,0.2);
+  animation: lockPulse 3s ease-in-out infinite;
+}
+
+@keyframes lockPulse {
+  0%,100% { box-shadow: 0 0 50px rgba(124,58,237,0.2); }
+  50% { box-shadow: 0 0 80px rgba(124,58,237,0.4); }
+}
+
+.lock-ring {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(124,58,237,0.2);
+  animation: ringExpand 2.5s ease-out infinite;
+}
+.lock-ring:nth-child(2) { animation-delay: 0.8s; }
+.lock-ring:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes ringExpand {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ── TEXT ── */
+.error-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.error-sub {
+  font-size: 15px;
+  color: var(--text2);
+  max-width: 420px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s 0.22s ease both;
+}
+
+/* ── CODE TAG ── */
+.code-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--purple-light);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px 10px;
+}
+
+/* ── BUTTONS ── */
+.error-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border2);
+  padding: 20px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  color: var(--text3); font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative; z-index: 1;
+}
+.footer-brand { display: flex; align-items: center; gap: 8px; color: var(--text2); }
+.footer-brand em { color: var(--purple-light); font-style: normal; font-weight: 700; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .nav { padding: 0 20px; }
+  .footer { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
+  body { overflow: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ORBS -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚡</div>
+    HTML <em>Vault</em>
+  </a>
+  <a href="index.html" class="btn-primary">
+    ← Go Home
+  </a>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="lock-wrap">
+    <div class="lock-ring"></div>
+    <div class="lock-ring"></div>
+    <div class="lock-ring"></div>
+    <div class="lock-icon">🔐</div>
+  </div>
+
+  <div class="error-code">404</div>
+
+  <h1 class="error-title">Page Not Found</h1>
+
+  <p class="error-sub">
+    This page doesn't exist or has been moved.
+    Your source code is still safe though —
+    <span class="code-tag">triple-layer encrypted</span> as always.
+  </p>
+
+  <div class="error-btns">
+    <a href="index.html" class="btn-primary">
+      ← Back to Home
+    </a>
+    <a href="landingpage.html#contact" class="btn-secondary">
+      Contact Us
+    </a>
+  </div>
+
+
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">⚡ HTML <em>Vault</em></div>
+  <div>Triple-layer encrypted. Globally unique. Yours.</div>
+</footer>
+
+</body>
+</html>
