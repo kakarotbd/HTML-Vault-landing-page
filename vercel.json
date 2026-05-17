@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/products", "destination": "/products.html" },
+    { "source": "/packages", "destination": "/packages.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/home", "destination": "/index.html" },
+    { "source": "/Html Vault", "destination": "/protect-app.html" },
+    { "source": "/(.*)", "destination": "/404.html" }
+  ]
+}
