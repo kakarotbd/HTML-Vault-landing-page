@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - ELECSY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box">A</div>
+    <span class="logo-em">ELECSY ADMIN</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="products.html" class="nav-link">Products</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="admin.html" class="nav-link active">Admin</a>
+  </div>
+  <div class="nav-right">
+    <a href="contact.html" class="btn btn-o btn-sm">New Inquiry</a>
+    <button class="btn btn-p btn-sm" type="button" onclick="adminLogout()">Logout</button>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleMob()">
+    <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
+  </button>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="mob-link" onclick="toggleMob()">Home</a>
+  <a href="products.html" class="mob-link" onclick="toggleMob()">Products</a>
+  <a href="contact.html" class="mob-link" onclick="toggleMob()">Contact</a>
+  <a href="admin.html" class="mob-link" onclick="toggleMob()">Admin</a>
+  <div class="mob-nav-btns">
+    <button class="btn btn-p btn-full" type="button" onclick="adminLogout()">Logout</button>
+  </div>
+</div>
+
+<main class="admin-shell">
+  <section class="admin-hero">
+    <div>
+      <div class="section-label">ELECSY ADMIN</div>
+      <h1 class="admin-title">All Submitted Forms</h1>
+      <p class="admin-sub">This page reads submitted forms from your Cloudflare Worker. The admin password is checked inside Worker, not inside public HTML or JavaScript.</p>
+    </div>
+    <div class="admin-tools">
+      <div class="admin-stat">
+        <strong id="adminCount">0</strong>
+        <span>Total submissions</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-login" id="adminLogin">
+    <label class="form-label" for="adminPass">Admin Password</label>
+    <div class="admin-login-row">
+      <input class="form-input" id="adminPass" type="password" placeholder="Enter Worker ADMIN_PASS" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button class="btn btn-p" type="button" onclick="adminLogin()">Open Inbox</button>
+    </div>
+  </section>
+
+  <div class="form-status" id="adminStatus"></div>
+
+  <section id="adminDashboard" style="display:none;">
+    <div class="admin-empty" id="adminEmpty">
+      No submission found in Worker storage yet.
+    </div>
+    <section class="admin-list" id="adminList"></section>
+  </section>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

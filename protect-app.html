@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electron DRM Protection - ELECSY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body class="protect-page">
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<audio id="introAudio" preload="auto">
+  <source src="/audio/intro.mp3" type="audio/mpeg">
+</audio>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box">⚡</div>
+    <span class="logo-em">ELECSY</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="products.html" class="nav-link">Products</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-pill">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('bn')">BN</button>
+    </div>
+    <a href="protect-app.html" class="btn btn-o btn-sm">Protect Software</a>
+    <a href="contact.html" class="btn btn-p btn-sm">Get a Quote</a>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleMob()">
+    <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
+  </button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="mob-link" onclick="toggleMob()">Home</a>
+  <a href="products.html" class="mob-link" onclick="toggleMob()">Products</a>
+  <a href="protect-app.html" class="mob-link" onclick="toggleMob()">Protect App</a>
+  <a href="packages.html" class="mob-link" onclick="toggleMob()">Packages</a>
+  <a href="contact.html" class="mob-link" onclick="toggleMob()">Contact</a>
+  <div class="mob-nav-btns">
+    <a href="#protect-form" class="btn btn-p btn-full" onclick="toggleMob()">Protect My Software</a>
+  </div>
+</div>
+
+<section class="protect-hero movie-intro-hero" id="protectIntro">
+  <div class="grid-bg"></div>
+  <div class="scan-beam"></div>
+  <div class="protect-shell">
+    <div class="protect-kicker">5 Star Hotel Vibes</div>
+    <h1 class="cinema-title">
+      <span>World First Electron Software</span>
+      <span class="drm-title-accent">DRM System</span>
+    </h1>
+    <p>World First Electron Software DRM System</p>
+    <div class="protect-actions">
+      <a href="#protect-form" class="btn btn-p">Protect My Software <i class="fas fa-arrow-right"></i></a>
+      <a href="products.html" class="btn btn-o">Products</a>
+    </div>
+    <div class="protect-mini-stats">
+      <div><strong>3x</strong><span>Security Layers</span></div>
+      <div><strong>1</strong><span>Worker Gateway</span></div>
+      <div><strong>24h</strong><span>Review Window</span></div>
+    </div>
+  </div>
+  <div class="drm-stage" aria-hidden="true">
+    <div class="cinema-frame">
+      <div class="cinema-frame-text">ELECSY DRM</div>
+    </div>
+    <div class="orbit orbit-a"></div>
+    <div class="orbit orbit-b"></div>
+    <div class="lock-core">
+      <div class="lock-shackle"></div>
+      <div class="lock-body">DRM</div>
+    </div>
+    <div class="code-stream s1">AES256::DEVICE_LOCK::RUN</div>
+    <div class="code-stream s2">HTML CSS JS - ELECTRON</div>
+    <div class="code-stream s3">SOURCE HIDDEN - EXE READY</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section protect-info" id="vault-info">
+
+  <!-- WHAT IS HTML VAULT -->
+  <div class="reveal" style="text-align:center;max-width:760px;margin:0 auto 64px;">
+    <div class="section-label">HTML VAULT DRM</div>
+    <h2 class="section-title">What Is HTML Vault?</h2>
+    <p class="section-sub" style="max-width:620px;margin:0 auto;">
+      HTML Vault is ELECSY's proprietary DRM system — the world's first encrypted delivery platform for Electron, HTML, and Python desktop apps. Your source code never touches the client machine. It stays encrypted in our secure server, decoded only at runtime when the app runs on an approved device.
+    </p>
+  </div>
+
+  <!-- HOW IT WORKS — STEP BY STEP WITH IMAGE -->
+  <div class="reveal d1" style="margin-bottom:80px;">
+    <div class="section-label" style="text-align:center;margin-bottom:12px;">HOW IT WORKS</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:48px;">From Your Code To Locked Desktop Software</h2>
+
+    <!-- FLOW STEPS -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;position:relative;margin-bottom:64px;">
+
+      <!-- Step connector line -->
+      <div style="position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(to right,var(--p2),var(--c),var(--g));opacity:0.3;z-index:0;border-radius:2px;"></div>
+
+      <!-- Step 1 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(109,40,217,0.2),rgba(109,40,217,0.05));border:1px solid var(--br);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;box-shadow:0 0 30px rgba(109,40,217,0.2);">📁</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--pl);margin-bottom:6px;letter-spacing:0.06em;">STEP 01</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">You Upload</div>
+        <div style="font-size:12px;color:var(--tx2);line-height:1.65;font-family:'JetBrains Mono',monospace;">Upload your entire HTML, CSS, JS project folder — images, assets, everything included.</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(109,40,217,0.2),rgba(109,40,217,0.05));border:1px solid var(--br);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;box-shadow:0 0 30px rgba(109,40,217,0.2);">🔐</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--pl);margin-bottom:6px;letter-spacing:0.06em;">STEP 02</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Triple Encryption</div>
+        <div style="font-size:12px;color:var(--tx2);line-height:1.65;font-family:'JetBrains Mono',monospace;">AES-256-GCM Layer 1 → AES-256-GCM Layer 2 → Homophonic Custom ENC. Three keys. All server-side.</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(14,165,233,0.05));border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;box-shadow:0 0 30px rgba(14,165,233,0.2);">⚡</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--cl);margin-bottom:6px;letter-spacing:0.06em;">STEP 03</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">EXE Generated</div>
+        <div style="font-size:12px;color:var(--tx2);line-height:1.65;font-family:'JetBrains Mono',monospace;">A secured Electron EXE launcher is generated. No source code inside — only encrypted references.</div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;box-shadow:0 0 30px rgba(16,185,129,0.2);">🖥️</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gl);margin-bottom:6px;letter-spacing:0.06em;">STEP 04</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Client Runs App</div>
+        <div style="font-size:12px;color:var(--tx2);line-height:1.65;font-family:'JetBrains Mono',monospace;">Client installs EXE. App contacts server, device is verified, content decrypts server-side, app loads.</div>
+      </div>
+
+      <!-- Step 5 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;box-shadow:0 0 30px rgba(245,158,11,0.2);">🛡️</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--acc);margin-bottom:6px;letter-spacing:0.06em;">STEP 05</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">You Stay In Control</div>
+        <div style="font-size:12px;color:var(--tx2);line-height:1.65;font-family:'JetBrains Mono',monospace;">Update anytime. Block non-payers. Push popups. All from your admin panel. Zero EXE rebuild.</div>
+      </div>
+
+    </div>
+
+    <!-- HOW IT WORKS IMAGE -->
+    <div style="max-width:700px;margin:0 auto;border-radius:20px;border:1px solid var(--br);overflow:hidden;box-shadow:0 0 60px rgba(109,40,217,0.15),0 24px 64px rgba(0,0,0,0.5);cursor:zoom-in;" onclick="openHowItWorksZoom()">
+      <img src="images/how-to-work.png" alt="How HTML Vault DRM Works" style="width:100%;display:block;" onerror="this.parentElement.style.display='none'">
+      <div style="position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);border:1px solid var(--br);border-radius:8px;padding:5px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--tx2);">🔍 Click to zoom</div>
+    </div>
+
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <div class="vault-grid reveal d2">
+    <div class="vault-card">
+      <span>01</span>
+      <h3>Triple-Layer Encryption</h3>
+      <p>AES-256-GCM × 2 plus Homophonic Custom ENC. Three completely separate keys stored server-side. Mathematically impossible to crack without all three.</p>
+    </div>
+    <div class="vault-card">
+      <span>02</span>
+      <h3>Hardware Device Lock</h3>
+      <p>Each EXE is bound to approved machines via BIOS serial, UUID, MAC address, CPU, and RAM fingerprinting. Copied EXE files don't work anywhere else.</p>
+    </div>
+    <div class="vault-card">
+      <span>03</span>
+      <h3>Server-Side Decryption</h3>
+      <p>Raw source code never reaches the client machine. Decryption happens inside ELECSY's Cloudflare Worker. The client only sees the rendered output.</p>
+    </div>
+    <div class="vault-card">
+      <span>04</span>
+      <h3>Instant Updates</h3>
+      <p>Push updates from your admin panel. All running apps silently receive changes within 60 seconds. No new EXE. No client visits. Just save and done.</p>
+    </div>
+    <div class="vault-card">
+      <span>05</span>
+      <h3>Remote Block & Control</h3>
+      <p>Non-paying client? Block them in one click from the admin panel. Their app stops working immediately. No calls, no visits, no stress.</p>
+    </div>
+    <div class="vault-card">
+      <span>06</span>
+      <h3>Client Editor Portal</h3>
+      <p>Give clients a secure private link to edit only their own content. Changes save directly to the encrypted backend. You stay in full control.</p>
+    </div>
+    <div class="vault-card">
+      <span>07</span>
+      <h3>HMAC Token Auth</h3>
+      <p>Every session uses a cryptographically signed one-time token. Replay attacks, brute force, and token theft are all blocked by design.</p>
+    </div>
+    <div class="vault-card">
+      <span>08</span>
+      <h3>Backend Popup System</h3>
+      <p>Send force popups, one-time notices, or repeat interval messages to your clients — all from admin panel without touching the EXE.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ZOOM MODAL FOR HOW IT WORKS IMAGE -->
+<div id="howItWorksModal" onclick="closeHowItWorksZoom()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(20px);align-items:center;justify-content:center;padding:20px;">
+  <button onclick="closeHowItWorksZoom()" style="position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:var(--s2);border:1px solid var(--br);color:var(--tx);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+  <img src="images/how-to-work.png" alt="How HTML Vault Works" style="max-width:90vw;max-height:88vh;object-fit:contain;border-radius:16px;border:1px solid var(--br);">
+</div>
+
+<section class="section protect-motion">
+  <div class="motion-strip reveal">
+    <div class="motion-line"></div>
+    <div class="motion-node n1">UPLOAD</div>
+    <div class="motion-node n2">ENCRYPT</div>
+    <div class="motion-node n3">LOCK</div>
+    <div class="motion-node n4">DELIVER</div>
+  </div>
+  <div class="reveal d2">
+    <div class="section-label">HOW IT PROTECTS</div>
+    <h2 class="section-title">From Web Code To Locked Desktop Software</h2>
+      <p class="section-sub">The first screen gives the DRM offer. After scrolling, customers see exactly how the system protects their Electron app, then submit a guarded request form connected to your Worker.</p>
+  </div>
+</section>
+
+<section class="section" id="protect-form">
+  <div class="protect-form-wrap reveal">
+    <div>
+      <div class="section-label">START PROTECTION</div>
+      <h2 class="section-title">Protect My Software</h2>
+      <p class="section-sub">Answer one quick question first. If your app is built with HTML, CSS, and JavaScript for Electron, the request form will open.</p>
+    </div>
+    <div class="form-box protect-request">
+      <div id="quizStep">
+        <div class="form-title">Is your app made with HTML, CSS, and JavaScript?</div>
+        <p class="form-sub">HTML Vault protection is designed for Electron software built from web technologies.</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="electronQuiz" value="yes"> <span>Yes</span></label>
+          <label class="quiz-option"><input type="radio" name="electronQuiz" value="no"> <span>No</span></label>
+        </div>
+        <button class="btn btn-p btn-full" type="button" onclick="nextProtectQuiz()">Next</button>
+        <div class="quiz-msg" id="quizMsg"></div>
+      </div>
+      <div id="requestStep" style="display:none">
+        <div class="form-title">Software Protection Request</div>
+        <p class="form-sub">Send the core details and ELECSY will review your Electron app protection setup.</p>
+        <div class="form-group">
+          <label class="form-label" for="protectName">Your Name</label>
+          <input class="form-input" id="protectName" type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="protectEmail">Email</label>
+          <input class="form-input" id="protectEmail" type="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="protectSoftwareName">Software Name</label>
+          <input class="form-input" id="protectSoftwareName" type="text" placeholder="Example: Restaurant POS Pro">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="protectCompanyName">Company Name <span class="optional">Optional</span></label>
+          <input class="form-input" id="protectCompanyName" type="text" placeholder="Your company or brand">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="protectPhone">Phone / WhatsApp Number</label>
+          <input class="form-input" id="protectPhone" type="tel" placeholder="+8801XXXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="protectBestTime">Best Time To Contact</label>
+          <select class="form-select" id="protectBestTime">
+            <option value="">Select time...</option>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+            <option value="anytime">Anytime</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="protectMessage">Protection Notes <span class="optional">Optional</span></label>
+          <textarea class="form-textarea" id="protectMessage" placeholder="Tell us your app stack, license plan, or current problem..."></textarea>
+        </div>
+        <div class="turnstile-wrap">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADRFJtjC3eybSa-D" data-theme="dark"></div>
+        </div>
+        <button class="btn btn-p btn-full" id="protectSubmitBtn" type="button" onclick="submitProtectRequest()">Submit Request</button>
+        <div class="form-status" id="protectFormStatus"></div>
+      </div>
+      <div id="protectSuccess" class="form-success">
+        <div class="success-icon">OK</div>
+        <div class="success-title">Request received</div>
+        <div class="success-desc">We will contact you through your phone or WhatsApp number for the next protection steps.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">⚡ <em>ELECSY</em><span class="footer-tag">2026</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div style="color:var(--tx3);">Built in Comilla, Bangladesh</div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+function openHowItWorksZoom() {
+  const modal = document.getElementById('howItWorksModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeHowItWorksZoom() {
+  const modal = document.getElementById('howItWorksModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeHowItWorksZoom();
+});
+</script>
+
+</body>
+</html>

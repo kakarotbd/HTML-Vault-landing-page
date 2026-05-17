@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Order — ELECSY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box">⚡</div>
+    <span class="logo-em">ELECSY</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="products.html" class="nav-link">Products</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="contact.html" class="nav-link active">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-pill">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <a href="protect-app.html" class="btn btn-o btn-sm">
+      <span data-en="Protect Software" data-bn="সফটওয়্যার সুরক্ষিত করুন">Protect Software</span>
+    </a>
+    <a href="contact.html" class="btn btn-p btn-sm">
+      <span data-en="Get a Quote" data-bn="কোটেশন নিন">Get a Quote</span>
+    </a>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleMob()">
+    <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
+  </button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="mob-link" onclick="toggleMob()">🏠 Home</a>
+  <a href="products.html" class="mob-link" onclick="toggleMob()">🛒 Products</a>
+  <a href="packages.html" class="mob-link" onclick="toggleMob()">💳 Packages</a>
+  <a href="protect-app.html" class="mob-link" onclick="toggleMob()">🛡️ Protect App</a>
+  <a href="contact.html" class="mob-link" onclick="toggleMob()">📬 Contact</a>
+  <div class="mob-nav-btns">
+    <a href="contact.html" class="btn btn-p btn-full" onclick="toggleMob()">Get a Quote →</a>
+  </div>
+</div>
+
+<section class="section" id="contact" style="padding-top:140px;">
+  <div class="contact-wrap">
+    <div class="reveal">
+      <div class="ci-tagline" data-en="LET'S BUILD SOMETHING" data-bn="আসুন কিছু তৈরি করি">LET'S BUILD SOMETHING</div>
+      <h2 class="ci-title" data-en="Ready to Order Your Software?" data-bn="আপনার সফটওয়্যার অর্ডার করতে প্রস্তুত?">Ready to Order<br><span class="grad-text">Your Software?</span></h2>
+      <p class="ci-desc" data-en="Fill out the form and we'll get back to you within a few hours with a quote and demo." data-bn="ফর্মটি পূরণ করুন এবং আমরা কয়েক ঘণ্টার মধ্যে কোটেশন ও ডেমো সহ যোগাযোগ করব।">Fill out the form and we'll get back to you within a few hours with a quote and demo. Or reach out directly on Facebook or email.</p>
+      <div class="contact-links">
+        <a href="https://facebook.com/elecsy" target="_blank" class="c-link">
+          <div class="c-link-icon" style="color:#1877f2;"><i class="fab fa-facebook-f"></i></div>
+          <div><div class="c-link-name">Facebook</div><div class="c-link-handle">/elecsy</div></div>
+          <div class="c-link-arrow">→</div>
+        </a>
+        <a href="https://instagram.com/elecsy" target="_blank" class="c-link">
+          <div class="c-link-icon" style="color:#e1306c;"><i class="fab fa-instagram"></i></div>
+          <div><div class="c-link-name">Instagram</div><div class="c-link-handle">@elecsy</div></div>
+          <div class="c-link-arrow">→</div>
+        </a>
+        <a href="mailto:rafin.goku@gmail.com" class="c-link">
+          <div class="c-link-icon" style="color:#0ea5e9;"><i class="fas fa-envelope"></i></div>
+          <div><div class="c-link-name">Email</div><div class="c-link-handle">rafin.goku@gmail.com</div></div>
+          <div class="c-link-arrow">→</div>
+        </a>
+      </div>
+      <div style="padding:18px 22px;border-radius:14px;background:var(--s1);border:1px solid var(--br2);">
+        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--tx3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">RESPONSE TIME</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--gl);box-shadow:0 0 10px var(--gl);animation:pulseDot 2s infinite;flex-shrink:0;"></div>
+          <div style="font-size:13px;color:var(--tx2);" data-en="Usually replies within 1–3 hours on Facebook. Same-day quote guaranteed." data-bn="সাধারণত Facebook-এ ১-৩ ঘণ্টার মধ্যে রিপ্লাই।">Usually replies within 1–3 hours on Facebook. Same-day quote guaranteed.</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="form-box">
+        <div id="formContent">
+          <div class="form-title" data-en="Order / Inquiry Form" data-bn="অর্ডার / জিজ্ঞাসা ফর্ম">Order / Inquiry Form</div>
+          <div class="form-sub" data-en="Tell us what you need — we'll build it." data-bn="আপনার কী দরকার তা জানান — আমরা তৈরি করব।">Tell us what you need — we'll build it.</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-en="Your Name *" data-bn="আপনার নাম *">Your Name *</label>
+              <input type="text" class="form-input" id="f-name" placeholder="Rafin Islam" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-en="Phone / WhatsApp *" data-bn="ফোন / WhatsApp *">Phone / WhatsApp *</label>
+              <input type="tel" class="form-input" id="f-phone" placeholder="01XXXXXXXXX" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="form-label" data-en="Business Name" data-bn="ব্যবসার নাম">Business Name</label>
+            <input type="text" class="form-input" id="f-biz" placeholder="My Restaurant / Shop">
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="form-label" data-en="Software Type *" data-bn="সফটওয়্যার টাইপ *">Software Type *</label>
+            <div class="sw-select-wrap" id="swWrap">
+              <div class="sw-selected-display" id="swDisplay" tabindex="0" onclick="toggleSwDropdown()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleSwDropdown()">
+                <span class="sw-display-icon" id="swDispIcon">📦</span>
+                <span class="sw-display-text placeholder" id="swDispText" data-en="Select software type..." data-bn="সফটওয়্যার টাইপ বেছে নিন...">Select software type...</span>
+                <span class="sw-arrow">▾</span>
+              </div>
+              <div class="sw-options" id="swOptions">
+                <div class="sw-opt" onclick="selectSw('restaurant','🍽️','Restaurant POS','Billing, orders, table management')"><div class="sw-opt-icon">🍽️</div><div><div class="sw-opt-name">Restaurant POS</div><div class="sw-opt-sub">Billing, orders, table management</div></div></div>
+                <div class="sw-opt" onclick="selectSw('shop','🛒','Shop / Retail POS','Barcode, inventory, sales tracking')"><div class="sw-opt-icon">🛒</div><div><div class="sw-opt-name">Shop / Retail POS</div><div class="sw-opt-sub">Barcode, inventory, sales tracking</div></div></div>
+                <div class="sw-opt" onclick="selectSw('mall','🏬','Shopping Mall POS','Multi-store, multi-user management')"><div class="sw-opt-icon">🏬</div><div><div class="sw-opt-name">Shopping Mall POS</div><div class="sw-opt-sub">Multi-store, multi-user management</div></div></div>
+                <div class="sw-opt" onclick="selectSw('pharmacy','💊','Pharmacy / Medicine Shop','Stock, expiry, billing, reports')"><div class="sw-opt-icon">💊</div><div><div class="sw-opt-name">Pharmacy / Medicine Shop</div><div class="sw-opt-sub">Stock, expiry, billing, reports</div></div></div>
+                <div class="sw-opt" onclick="selectSw('clinic','🏥','Clinic / Hospital','Patient records, appointments, billing')"><div class="sw-opt-icon">🏥</div><div><div class="sw-opt-name">Clinic / Hospital</div><div class="sw-opt-sub">Patient records, appointments, billing</div></div></div>
+                <div class="sw-opt" onclick="selectSw('school','📚','School / Coaching Center','Enrollment, fees, attendance, results')"><div class="sw-opt-icon">📚</div><div><div class="sw-opt-name">School / Coaching Center</div><div class="sw-opt-sub">Enrollment, fees, attendance, results</div></div></div>
+                <div class="sw-opt" onclick="selectSw('garments','🧥','Garments / Clothing Shop','Stock, sizes, colors, billing')"><div class="sw-opt-icon">🧥</div><div><div class="sw-opt-name">Garments / Clothing Shop</div><div class="sw-opt-sub">Stock, sizes, colors, billing</div></div></div>
+                <div class="sw-opt" onclick="selectSw('htmlvault','⚡','HTML Vault — App Protection','Encrypt & deliver your HTML/Python app')"><div class="sw-opt-icon">⚡</div><div><div class="sw-opt-name">HTML Vault — App Protection</div><div class="sw-opt-sub">Encrypt & deliver your HTML/Python app</div></div></div>
+                <div class="sw-opt" onclick="selectSw('custom','⚙️','Custom Software','Describe your specific requirement below')"><div class="sw-opt-icon">⚙️</div><div><div class="sw-opt-name">Custom Software</div><div class="sw-opt-sub">Describe your specific requirement below</div></div></div>
+              </div>
+            </div>
+            <input type="hidden" id="f-swtype" value="">
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="form-label" data-en="Budget Range" data-bn="বাজেট পরিসীমা">Budget Range</label>
+            <select class="form-select" id="f-budget">
+              <option value="">Select budget...</option>
+              <option value="<5k">Under ৳5,000</option>
+              <option value="5-15k">৳5,000 – ৳15,000</option>
+              <option value="15-30k">৳15,000 – ৳30,000</option>
+              <option value="30k+">৳30,000+</option>
+              <option value="discuss">Let's discuss</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:22px;">
+            <label class="form-label" data-en="Tell us more (optional)" data-bn="আরও বলুন (ঐচ্ছিক)">Tell us more (optional)</label>
+            <textarea class="form-textarea" id="f-msg" placeholder="e.g. I run a restaurant in Dhaka, need billing + kitchen display + daily report..."></textarea>
+          </div>
+          <button class="btn btn-p btn-full" id="submitBtn" onclick="submitForm()">
+            <span id="submitLabel"><span data-en="Send My Inquiry →" data-bn="আমার জিজ্ঞাসা পাঠান →">Send My Inquiry →</span></span>
+          </button>
+          <div style="margin-top:14px;text-align:center;font-size:11px;color:var(--tx3);font-family:'JetBrains Mono',monospace;" data-en="No spam. Direct reply from the developer." data-bn="কোনো স্প্যাম নেই। ডেভেলপারের সরাসরি রিপ্লাই।">No spam. Direct reply from the developer.</div>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">🚀</div>
+          <div class="success-title" data-en="Message Sent!" data-bn="বার্তা পাঠানো হয়েছে!">Message Sent!</div>
+          <div class="success-desc" data-en="We'll get back to you within a few hours. Check your Facebook messages or email." data-bn="আমরা কয়েক ঘণ্টার মধ্যে যোগাযোগ করব।">We'll get back to you within a few hours. Check your Facebook messages or email.</div>
+          <div style="margin-top:24px;">
+            <a href="https://facebook.com/elecsy" target="_blank" class="btn btn-p">
+              <i class="fab fa-facebook-f"></i>
+              <span data-en="Message on Facebook" data-bn="Facebook-এ Message করুন">Message on Facebook</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">⚡ <em>ELECSY</em><span class="footer-tag">© 2026</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div style="color:var(--tx3);" data-en="Built in Comilla, Bangladesh 🇧🇩" data-bn="কুমিল্লা, বাংলাদেশে নির্মিত 🇧🇩">Built in Comilla, Bangladesh 🇧🇩</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

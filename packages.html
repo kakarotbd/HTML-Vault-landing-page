@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packages & Pricing — ELECSY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── PACKAGE PAGE EXTRAS ── */
+.pkg-hero{
+  padding:140px 24px 70px;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.pkg-hero .hero-glow{
+  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:800px;height:600px;pointer-events:none;
+  background:radial-gradient(circle,rgba(109,40,217,.13) 0%,transparent 65%);
+}
+
+/* Compare toggle */
+.compare-toggle{
+  display:flex;gap:4px;background:var(--s1);
+  border:1px solid var(--br2);border-radius:100px;
+  padding:4px;margin:0 auto 56px;width:fit-content;
+}
+.ct-btn{
+  padding:8px 22px;border-radius:100px;border:none;
+  background:transparent;color:var(--tx3);
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  font-weight:500;cursor:pointer;transition:all .24s;
+  letter-spacing:.05em;
+}
+.ct-btn.active{background:var(--pp);color:var(--tx);}
+
+/* Package cards — bigger, richer */
+.pkg-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:1100px;margin:0 auto;
+  padding:0 24px 80px;
+  position:relative;z-index:1;
+}
+.pkg-card{
+  border-radius:26px;padding:38px 34px 34px;
+  border:1px solid var(--br2);background:var(--s1);
+  position:relative;transition:all .38s var(--ease);
+  display:flex;flex-direction:column;
+}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 24px 70px rgba(0,0,0,.45);}
+.pkg-card.hot{
+  border-color:var(--p2);
+  background:linear-gradient(155deg,rgba(109,40,217,.14),var(--s1) 60%);
+  box-shadow:0 0 90px rgba(109,40,217,.18);
+}
+.pkg-card.custom-card{
+  border-color:rgba(16,185,129,.25);
+  background:linear-gradient(155deg,rgba(16,185,129,.07),var(--s1) 60%);
+}
+.pkg-card.custom-card:hover{box-shadow:0 24px 70px rgba(16,185,129,.15);}
+
+.pkg-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  color:#fff;font-size:10px;font-weight:700;
+  font-family:'JetBrains Mono',monospace;letter-spacing:.1em;
+  padding:5px 18px;border-radius:100px;white-space:nowrap;
+}
+.badge-pro{background:linear-gradient(90deg,var(--p2),#4c1d95);box-shadow:0 4px 22px rgba(109,40,217,.45);}
+.badge-custom{background:linear-gradient(90deg,#059669,#10b981);box-shadow:0 4px 22px rgba(16,185,129,.35);}
+
+.pkg-tier{
+  font-size:10px;font-family:'JetBrains Mono',monospace;
+  color:var(--tx3);letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.pkg-name{
+  font-family:'Syne',sans-serif;font-size:26px;font-weight:800;
+  margin-bottom:6px;
+}
+.pkg-tagline{
+  font-size:12px;color:var(--tx3);font-family:'JetBrains Mono',monospace;
+  margin-bottom:24px;line-height:1.5;
+}
+
+.pkg-price-wrap{margin-bottom:8px;}
+.pkg-price{
+  font-family:'Bebas Neue',sans-serif;font-size:58px;
+  line-height:1;letter-spacing:.02em;
+}
+.pkg-price .currency{font-size:26px;vertical-align:super;margin-right:2px;color:var(--pl);}
+.pkg-price-note{
+  font-size:11px;color:var(--tx3);
+  font-family:'JetBrains Mono',monospace;
+  margin-bottom:28px;
+}
+.pkg-price-note span{color:var(--tx2);}
+
+.pkg-divider{height:1px;background:var(--br2);margin-bottom:22px;}
+
+/* Section headers inside card */
+.pkg-section-label{
+  font-size:9px;font-family:'JetBrains Mono',monospace;
+  color:var(--tx3);letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:10px;margin-top:18px;
+  display:flex;align-items:center;gap:8px;
+}
+.pkg-section-label::after{content:'';flex:1;height:1px;background:var(--br2);}
+
+.pkg-features{
+  list-style:none;display:flex;flex-direction:column;
+  gap:9px;margin-bottom:0;flex:1;
+}
+.pkg-features li{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:13px;color:var(--tx2);line-height:1.55;
+}
+.pf-check{color:var(--gl);font-size:12px;flex-shrink:0;margin-top:2px;}
+.pf-check.amber{color:var(--acc);}
+.pf-check.blue{color:var(--cl);}
+.pf-bold{color:var(--tx);font-weight:600;}
+
+.pkg-cta{
+  margin-top:28px;
+}
+
+/* Owner App highlight box */
+.owner-box{
+  background:rgba(109,40,217,.08);
+  border:1px solid rgba(109,40,217,.2);
+  border-radius:14px;padding:14px 16px;
+  margin:14px 0;display:flex;align-items:center;gap:12px;
+}
+.owner-box-icon{font-size:22px;flex-shrink:0;}
+.owner-box-title{font-size:12px;font-weight:700;color:var(--pl);margin-bottom:2px;}
+.owner-box-desc{font-size:11px;color:var(--tx3);font-family:'JetBrains Mono',monospace;}
+
+/* FAQ / info strip below cards */
+.pkg-info-strip{
+  max-width:900px;margin:0 auto 80px;padding:0 24px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  position:relative;z-index:1;
+}
+.pis-item{
+  background:var(--s1);border:1px solid var(--br2);
+  border-radius:16px;padding:22px 20px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.pis-icon{font-size:22px;flex-shrink:0;}
+.pis-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.pis-desc{font-size:12px;color:var(--tx3);line-height:1.6;}
+
+@media(max-width:900px){
+  .pkg-grid{grid-template-columns:1fr;}
+  .pkg-info-strip{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box">⚡</div>
+    <span class="logo-em">ELECSY</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="products.html" class="nav-link">Products</a>
+    <a href="packages.html" class="nav-link active">Packages</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-pill">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <a href="protect-app.html" class="btn btn-o btn-sm">
+      <span data-en="Protect Software" data-bn="সফটওয়্যার সুরক্ষিত করুন">Protect Software</span>
+    </a>
+    <a href="contact.html" class="btn btn-p btn-sm">Get a Quote</a>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleMob()">
+    <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
+  </button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="mob-link" onclick="toggleMob()">🏠 Home</a>
+  <a href="products.html" class="mob-link" onclick="toggleMob()">🛒 Products</a>
+  <a href="packages.html" class="mob-link" onclick="toggleMob()">💳 Packages</a>
+  <a href="protect-app.html" class="mob-link" onclick="toggleMob()">🛡️ Protect App</a>
+  <a href="contact.html" class="mob-link" onclick="toggleMob()">📬 Contact</a>
+  <div class="mob-nav-btns">
+    <a href="contact.html" class="btn btn-p btn-full" onclick="toggleMob()">Get a Quote →</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="pkg-hero">
+  <div class="hero-glow"></div>
+  <div class="badge" style="margin-bottom:28px;">
+    <div class="badge-dot"></div>
+    <span data-en="Transparent Pricing — No Hidden Fees" data-bn="স্বচ্ছ মূল্য — কোনো লুকানো চার্জ নেই">Transparent Pricing — No Hidden Fees</span>
+  </div>
+  <div class="section-label" style="justify-content:center;" data-en="PACKAGES & PRICING" data-bn="প্যাকেজ ও মূল্য">PACKAGES & PRICING</div>
+  <h1 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 16px;" data-en="Pick the Right Plan for Your Business" data-bn="আপনার ব্যবসার জন্য সঠিক প্ল্যান বেছে নিন">Pick the Right Plan<br><span class="grad-text">for Your Business</span></h1>
+  <p style="text-align:center;color:var(--tx2);font-size:15px;max-width:500px;margin:0 auto 44px;line-height:1.8;" data-en="From a simple POS system to a fully managed software suite with live owner dashboard, backup and dedicated support." data-bn="সাধারণ POS থেকে শুরু করে লাইভ ওনার ড্যাশবোর্ড, ব্যাকআপ ও ডেডিকেটেড সাপোর্ট সহ সম্পূর্ণ ম্যানেজড প্যাকেজ।">From a simple POS system to a fully managed software suite with live owner dashboard, backup and dedicated support.</p>
+</div>
+
+<!-- PACKAGE CARDS -->
+<div class="pkg-grid">
+
+  <!-- ══ BASIC ══ -->
+  <div class="pkg-card reveal">
+    <div class="pkg-tier" data-en="STARTER · FOR SMALL BUSINESS" data-bn="স্টার্টার · ছোট ব্যবসার জন্য">STARTER · FOR SMALL BUSINESS</div>
+    <div class="pkg-name" data-en="Basic" data-bn="বেসিক">Basic</div>
+    <div class="pkg-tagline" data-en="Everything you need to run your business digitally." data-bn="আপনার ব্যবসা ডিজিটালি চালাতে যা দরকার।">Everything you need to run your business digitally.</div>
+
+    <div class="pkg-price-wrap">
+      <div class="pkg-price"><span class="currency">৳</span>8,000</div>
+    </div>
+    <div class="pkg-price-note" data-en="One-time setup · + ৳500/month maintenance" data-bn="একবার সেটআপ · + ৳৫০০/মাস মেইনটেন্যান্স">One-time setup &nbsp;·&nbsp; <span>+ ৳500 / month</span></div>
+
+    <div class="pkg-divider"></div>
+
+    <div class="pkg-section-label">POS SOFTWARE</div>
+    <ul class="pkg-features">
+      <li><span class="pf-check">✓</span><span>Full <span class="pf-bold">POS billing system</span> (restaurant / shop / clinic / school)</span></li>
+      <li><span class="pf-check">✓</span><span><span class="pf-bold">Daily & monthly</span> sales reports</span></li>
+      <li><span class="pf-check">✓</span><span>Inventory & stock management</span></li>
+      <li><span class="pf-check">✓</span><span>Thermal printer support (58mm & 80mm)</span></li>
+      <li><span class="pf-check">✓</span><span>Offline mode — works without internet</span></li>
+      <li><span class="pf-check">✓</span><span>Bangla + English interface</span></li>
+      <li><span class="pf-check">✓</span><span>Multi-user roles (Admin / Cashier)</span></li>
+
+      <div class="pkg-section-label">DELIVERY</div>
+      <li><span class="pf-check">✓</span><span>Your branding & logo</span></li>
+      <li><span class="pf-check">✓</span><span>48-hour delivery</span></li>
+      <li><span class="pf-check">✓</span><span>Free bug fix updates</span></li>
+      <li><span class="pf-check amber">✗</span><span style="color:var(--tx3);">Owner mobile app</span></li>
+      <li><span class="pf-check amber">✗</span><span style="color:var(--tx3);">Automatic cloud backup</span></li>
+      <li><span class="pf-check amber">✗</span><span style="color:var(--tx3);">Priority support</span></li>
+    </ul>
+
+    <div class="pkg-cta">
+      <a href="contact.html?pkg=basic" class="btn btn-o btn-full">
+        <span data-en="Get Basic →" data-bn="বেসিক নিন →">Get Basic →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ PROFESSIONAL ══ -->
+  <div class="pkg-card hot reveal d2">
+    <div class="pkg-badge badge-pro" data-en="MOST POPULAR" data-bn="সবচেয়ে জনপ্রিয়">MOST POPULAR</div>
+    <div class="pkg-tier" data-en="PROFESSIONAL · FOR GROWING BUSINESS" data-bn="প্রফেশনাল · বড় হওয়া ব্যবসার জন্য">PROFESSIONAL · FOR GROWING BUSINESS</div>
+    <div class="pkg-name" data-en="Professional" data-bn="প্রফেশনাল">Professional</div>
+    <div class="pkg-tagline" data-en="Run your business + watch it grow from your phone." data-bn="ব্যবসা চালান + ফোন থেকে লাইভ দেখুন।">Run your business + watch it grow from your phone.</div>
+
+    <div class="pkg-price-wrap">
+      <div class="pkg-price"><span class="currency">৳</span>18,000</div>
+    </div>
+    <div class="pkg-price-note" data-en="One-time setup · + ৳1,200/month managed" data-bn="একবার সেটআপ · + ৳১,২০০/মাস ম্যানেজড">One-time setup &nbsp;·&nbsp; <span>+ ৳1,200 / month</span></div>
+
+    <!-- Owner App highlight -->
+    <div class="owner-box">
+      <div class="owner-box-icon">📱</div>
+      <div>
+        <div class="owner-box-title" data-en="Owner App — Live Sales Dashboard" data-bn="ওনার অ্যাপ — লাইভ সেলস ড্যাশবোর্ড">Owner App — Live Sales Dashboard</div>
+        <div class="owner-box-desc" data-en="See today's sales, top items & staff activity from anywhere." data-bn="যেকোনো জায়গা থেকে আজকের বিক্রয়, টপ আইটেম ও স্টাফ দেখুন।">See today's sales, top items & staff from anywhere.</div>
+      </div>
+    </div>
+
+    <div class="pkg-divider"></div>
+
+    <div class="pkg-section-label">EVERYTHING IN BASIC, PLUS</div>
+    <ul class="pkg-features">
+      <li><span class="pf-check blue">✓</span><span><span class="pf-bold">Owner mobile app</span> — live sales, daily summary, stock alerts</span></li>
+      <li><span class="pf-check blue">✓</span><span><span class="pf-bold">Automatic cloud backup</span> — daily encrypted data backup</span></li>
+      <li><span class="pf-check blue">✓</span><span><span class="pf-bold">One-click restore</span> — recover any day's data instantly</span></li>
+      <li><span class="pf-check blue">✓</span><span>Remote sales monitoring — see which cashier sold what</span></li>
+      <li><span class="pf-check blue">✓</span><span>Low stock push notifications to owner</span></li>
+      <li><span class="pf-check blue">✓</span><span>Monthly business summary PDF sent to owner</span></li>
+
+      <div class="pkg-section-label">BILLING & MANAGEMENT</div>
+      <li><span class="pf-check">✓</span><span>Advanced billing — discount, tax, multiple payment modes</span></li>
+      <li><span class="pf-check">✓</span><span>Customer accounts & credit management</span></li>
+      <li><span class="pf-check">✓</span><span>Supplier & purchase management</span></li>
+      <li><span class="pf-check">✓</span><span>Profit & loss report per day / week / month</span></li>
+
+      <div class="pkg-section-label">SUPPORT</div>
+      <li><span class="pf-check">✓</span><span><span class="pf-bold">Priority WhatsApp support</span> — 2-hour response</span></li>
+      <li><span class="pf-check">✓</span><span>Free feature updates for 1 year</span></li>
+      <li><span class="pf-check">✓</span><span>Remote troubleshooting via AnyDesk</span></li>
+    </ul>
+
+    <div class="pkg-cta">
+      <a href="contact.html?pkg=pro" class="btn btn-p btn-full">
+        <span data-en="Get Professional →" data-bn="প্রফেশনাল নিন →">Get Professional →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ CUSTOM ══ -->
+  <div class="pkg-card custom-card reveal d3">
+    <div class="pkg-badge badge-custom" data-en="FULL OWNERSHIP" data-bn="সম্পূর্ণ মালিকানা">FULL OWNERSHIP</div>
+    <div class="pkg-tier" data-en="CUSTOM · ENTERPRISE & AGENCIES" data-bn="কাস্টম · এন্টারপ্রাইজ ও এজেন্সি">CUSTOM · ENTERPRISE & AGENCIES</div>
+    <div class="pkg-name" data-en="Custom" data-bn="কাস্টম">Custom</div>
+    <div class="pkg-tagline" data-en="Built from scratch for your exact workflow. You own the source code." data-bn="আপনার exact workflow-এর জন্য স্ক্র্যাচ থেকে তৈরি। সোর্স কোড আপনার।">Built from scratch for your exact workflow. You own the source code.</div>
+
+    <div class="pkg-price-wrap">
+      <div class="pkg-price" style="font-size:44px;padding-top:6px;" data-en="Let's Talk" data-bn="আলোচনা করি">Let's Talk</div>
+    </div>
+    <div class="pkg-price-note" data-en="Starts from ৳30,000 · Quoted per project" data-bn="৳৩০,০০০ থেকে শুরু · প্রজেক্ট অনুযায়ী কোটেশন">Starts from ৳30,000 &nbsp;·&nbsp; <span>Quoted per project</span></div>
+
+    <div class="pkg-divider"></div>
+
+    <div class="pkg-section-label">EVERYTHING IN PROFESSIONAL, PLUS</div>
+    <ul class="pkg-features">
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span><span class="pf-bold">Full source code ownership</span> — you own everything</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span><span class="pf-bold">Custom module development</span> — any feature you need</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span><span class="pf-bold">Multi-branch support</span> — manage all outlets from one panel</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span><span class="pf-bold">White-label resell rights</span> — sell it as your own product</span></li>
+
+      <div class="pkg-section-label">ADVANCED FEATURES</div>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Custom API integrations (SMS, payment gateway, bKash, Nagad)</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Advanced role permissions — granular access control</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Custom reporting — build any report you need</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Data migration from your old system</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Barcode / QR code label printing</span></li>
+
+      <div class="pkg-section-label">OWNERSHIP & SUPPORT</div>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span><span class="pf-bold">Dedicated developer</span> — direct line, not a support ticket</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Lifetime free bug fixes</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>On-site installation & staff training</span></li>
+      <li><span class="pf-check" style="color:#34d399;">✓</span><span>Custom SLA agreement</span></li>
+    </ul>
+
+    <div class="pkg-cta">
+      <a href="contact.html?pkg=custom" class="btn btn-full" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;box-shadow:0 4px 28px rgba(16,185,129,.35);justify-content:center;display:flex;align-items:center;gap:8px;padding:13px 28px;border-radius:12px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:all .32s;">
+        <span data-en="Discuss My Project →" data-bn="প্রজেক্ট নিয়ে আলোচনা করুন →">Discuss My Project →</span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /pkg-grid -->
+
+<!-- INFO STRIP -->
+<div class="pkg-info-strip reveal">
+  <div class="pis-item">
+    <div class="pis-icon">🚚</div>
+    <div>
+      <div class="pis-title" data-en="Fast Delivery" data-bn="দ্রুত ডেলিভারি">Fast Delivery</div>
+      <div class="pis-desc" data-en="Basic & Professional delivered within 48 hours. Custom projects within agreed timeline." data-bn="Basic ও Professional ৪৮ ঘণ্টার মধ্যে ডেলিভারি। Custom প্রজেক্ট সম্মত সময়ের মধ্যে।">Basic & Professional delivered within 48 hours. Custom projects within agreed timeline.</div>
+    </div>
+  </div>
+  <div class="pis-item">
+    <div class="pis-icon">🔄</div>
+    <div>
+      <div class="pis-title" data-en="Upgrade Anytime" data-bn="যেকোনো সময় আপগ্রেড">Upgrade Anytime</div>
+      <div class="pis-desc" data-en="Start with Basic, upgrade to Professional or Custom whenever your business grows." data-bn="Basic দিয়ে শুরু করুন, ব্যবসা বড় হলে Professional বা Custom-এ আপগ্রেড করুন।">Start with Basic, upgrade to Professional or Custom whenever your business grows.</div>
+    </div>
+  </div>
+  <div class="pis-item">
+    <div class="pis-icon">💬</div>
+    <div>
+      <div class="pis-title" data-en="Not sure which plan?" data-bn="কোন প্ল্যান নেবেন বুঝতে পারছেন না?">Not sure which plan?</div>
+      <div class="pis-desc" data-en="Message us on Facebook or WhatsApp — we'll recommend the right package for your business for free." data-bn="Facebook বা WhatsApp-এ মেসেজ করুন — আমরা বিনামূল্যে সঠিক প্যাকেজ সাজেস্ট করব।">Message us on Facebook or WhatsApp — we'll recommend the right package free of charge.</div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-brand">⚡ <em>ELECSY</em><span class="footer-tag">© 2026</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div style="color:var(--tx3);" data-en="Built in Comilla, Bangladesh 🇧🇩" data-bn="কুমিল্লা, বাংলাদেশে নির্মিত 🇧🇩">Built in Comilla, Bangladesh 🇧🇩</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

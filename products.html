@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — ELECSY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="products-cinema-page">
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box">⚡</div>
+    <span class="logo-em">ELECSY</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="products.html" class="nav-link active">Products</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-pill">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <a href="protect-app.html" class="btn btn-o btn-sm">
+      <span data-en="Protect Software" data-bn="সফটওয়্যার সুরক্ষিত করুন">Protect Software</span>
+    </a>
+    <a href="contact.html" class="btn btn-p btn-sm">
+      <span data-en="Get a Quote" data-bn="কোটেশন নিন">Get a Quote</span>
+    </a>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleMob()">
+    <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
+  </button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="mob-link" onclick="toggleMob()">🏠 Home</a>
+  <a href="products.html" class="mob-link" onclick="toggleMob()">🛒 Products</a>
+  <a href="packages.html" class="mob-link" onclick="toggleMob()">💳 Packages</a>
+  <a href="protect-app.html" class="mob-link" onclick="toggleMob()">🛡️ Protect App</a>
+  <a href="contact.html" class="mob-link" onclick="toggleMob()">📬 Contact</a>
+  <div class="mob-nav-btns">
+    <a href="contact.html" class="btn btn-p btn-full" onclick="toggleMob()">Get a Quote →</a>
+  </div>
+</div>
+
+<section class="section products-content" id="products">
+  <div class="reveal">
+    <div class="section-label" data-en="WHAT WE BUILD" data-bn="আমরা কী বানাই">WHAT WE BUILD</div>
+    <h2 class="section-title" data-en="Software For Every Business" data-bn="প্রতিটি ব্যবসার জন্য সফটওয়্যার">Software For Every Business</h2>
+    <p class="section-sub" data-en="Professional Electron-based desktop applications built specifically for the Bangladeshi market — fast, offline-ready, and secure." data-bn="বাংলাদেশি বাজারের জন্য বিশেষভাবে তৈরি পেশাদার ডেস্কটপ অ্যাপ্লিকেশন।">Professional Electron-based desktop applications built specifically for the Bangladeshi market — fast, offline-ready, and secure.</p>
+  </div>
+  <div class="products-grid reveal d1">
+    <div class="prod-card reveal d2">
+      <div class="prod-icon-wrap">🍽️</div>
+      <div class="prod-name" data-en="Restaurant POS" data-bn="রেস্তোরাঁ পস">Restaurant POS</div>
+      <div class="prod-desc" data-en="Full billing, order management, table tracking, kitchen display, daily reports and inventory. Works offline, perfect for Bangladeshi restaurants." data-bn="পূর্ণ বিলিং, অর্ডার ম্যানেজমেন্ট, টেবিল ট্র্যাকিং।">Full billing, order management, table tracking, kitchen display, daily reports and inventory. Works offline.</div>
+      <div class="prod-tags"><span class="prod-tag">Billing</span><span class="prod-tag">KDS</span><span class="prod-tag">Reports</span><span class="prod-tag">Offline</span></div>
+    </div>
+    <div class="prod-card reveal d3">
+      <div class="prod-icon-wrap">🛒</div>
+      <div class="prod-name" data-en="Shopping Mall / Shop POS" data-bn="শপিং মল / দোকান পস">Shopping Mall / Shop POS</div>
+      <div class="prod-desc" data-en="Barcode scanning, inventory management, sales tracking, customer accounts, multi-user support." data-bn="বারকোড স্ক্যানিং, ইনভেন্টরি ম্যানেজমেন্ট।">Barcode scanning, inventory management, sales tracking, customer accounts, multi-user support.</div>
+      <div class="prod-tags"><span class="prod-tag">Barcode</span><span class="prod-tag">Inventory</span><span class="prod-tag">Multi-User</span></div>
+    </div>
+    <div class="prod-card reveal d2">
+      <div class="prod-icon-wrap">💊</div>
+      <div class="prod-name" data-en="Pharmacy / Clinic" data-bn="ফার্মেসি / ক্লিনিক">Pharmacy / Clinic</div>
+      <div class="prod-desc" data-en="Patient records, prescription management, medicine inventory, expiry tracking, billing and daily sales reports." data-bn="রোগীর রেকর্ড, প্রেসক্রিপশন ম্যানেজমেন্ট, ওষুধের ইনভেন্টরি।">Patient records, prescription management, medicine inventory, expiry tracking, billing and daily sales reports.</div>
+      <div class="prod-tags"><span class="prod-tag">Patients</span><span class="prod-tag">Expiry Alert</span><span class="prod-tag">Billing</span></div>
+    </div>
+    <div class="prod-card reveal d3">
+      <div class="prod-icon-wrap">📚</div>
+      <div class="prod-name" data-en="School / Coaching Center" data-bn="স্কুল / কোচিং সেন্টার">School / Coaching Center</div>
+      <div class="prod-desc" data-en="Student enrollment, fee collection, attendance tracking, exam results, teacher management and SMS notification system." data-bn="ছাত্র ভর্তি, ফি সংগ্রহ, উপস্থিতি ট্র্যাকিং।">Student enrollment, fee collection, attendance tracking, exam results, teacher management and SMS notification.</div>
+      <div class="prod-tags"><span class="prod-tag">Students</span><span class="prod-tag">Attendance</span><span class="prod-tag">Results</span></div>
+    </div>
+    <div class="prod-card reveal d4">
+      <div class="prod-icon-wrap">🧥</div>
+      <div class="prod-name" data-en="Garments / Clothing Shop" data-bn="গার্মেন্টস / কাপড়ের দোকান">Garments / Clothing Shop</div>
+      <div class="prod-desc" data-en="Stock management by size and color, barcode support, sales tracking, and billing tailored for clothing businesses." data-bn="সাইজ ও রং অনুযায়ী স্টক ম্যানেজমেন্ট।">Stock management by size and color, barcode support, sales tracking, and billing for clothing businesses.</div>
+      <div class="prod-tags"><span class="prod-tag">Sizes</span><span class="prod-tag">Colors</span><span class="prod-tag">Barcode</span></div>
+    </div>
+    <div class="prod-card reveal d2">
+      <div class="prod-icon-wrap">⚙️</div>
+      <div class="prod-name" data-en="Custom Software" data-bn="কাস্টম সফটওয়্যার">Custom Software</div>
+      <div class="prod-desc" data-en="Have a unique need? We build fully custom desktop software for any Bangladeshi business — with your branding, your workflow, your rules." data-bn="অনন্য চাহিদা আছে? যেকোনো ব্যবসার জন্য সম্পূর্ণ কাস্টম সফটওয়্যার।">Have a unique need? We build fully custom desktop software for any business — with your branding, your workflow, your rules.</div>
+      <div class="prod-tags"><span class="prod-tag">Any Industry</span><span class="prod-tag">White-Label</span><span class="prod-tag">Custom</span></div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">⚡ <em>ELECSY</em><span class="footer-tag">© 2026</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="packages.html">Packages</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div style="color:var(--tx3);" data-en="Built in Comilla, Bangladesh 🇧🇩" data-bn="কুমিল্লা, বাংলাদেশে নির্মিত 🇧🇩">Built in Comilla, Bangladesh 🇧🇩</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
