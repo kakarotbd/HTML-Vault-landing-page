@@ -6,7 +6,6 @@
     { "source": "/packages", "destination": "/packages.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/home", "destination": "/index.html" },
-    { "source": "/protect-app.html", "destination": "/protect-app.html" },
     { "source": "/(.*)", "destination": "/404.html" }
   ]
 }
