@@ -6,7 +6,7 @@
     { "source": "/packages", "destination": "/packages.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/home", "destination": "/index.html" },
-    { "source": "/HtmlVault", "destination": "/protect-app.html" },
+    { "source": "/protect-app", "destination": "/protect-app.html" },
     { "source": "/(.*)", "destination": "/404.html" }
   ]
 }
