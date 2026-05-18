@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — ELECSY</title>
+<meta name="description" content="ELECSY Support. Get technical support and help with our software products.">
+<meta name="robots" content="index, follow">
+<meta name="canonical" href="https://elecsy.com/support.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo"><div class="logo-box">⚡</div><span class="logo-em">ELECSY</span></a>
+  <div class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="products.html" class="nav-link">Products</a><a href="packages.html" class="nav-link">Packages</a><a href="contact.html" class="nav-link">Contact</a></div>
+  <div class="nav-right"><div class="lang-pill"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('bn')">বাং</button></div><a href="protect-app.html" class="btn btn-o btn-sm"><span>Protect Software</span></a><a href="contact.html" class="btn btn-p btn-sm"><span>Get a Quote</span></a></div>
+  <button class="hamburger" id="ham" onclick="toggleMob()"><div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div></button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="mob-link" onclick="toggleMob()">🏠 Home</a><a href="products.html" class="mob-link" onclick="toggleMob()">🛒 Products</a><a href="packages.html" class="mob-link" onclick="toggleMob()">💳 Packages</a><a href="contact.html" class="mob-link" onclick="toggleMob()">📬 Contact</a>
+  <div class="mob-nav-btns"><a href="contact.html" class="btn btn-p btn-full" onclick="toggleMob()">Get a Quote →</a></div>
+</div>
+
+<section class="section" style="padding-top: 140px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-family:'Syne',sans-serif; font-size:48px; font-weight:800; margin-bottom:32px;">Support Center</h1>
+    
+    <h2 style="font-family:'Syne',sans-serif; font-size:24px; font-weight:700; margin-top:40px; margin-bottom:16px;">Create a Support Ticket</h2>
+    <p style="color: var(--tx2); margin-bottom: 32px; font-size: 16px; line-height: 1.8;">
+      Submit your issue and we'll get back to you as soon as possible.
+    </p>
+    
+    <form style="max-width: 600px; margin: 0 auto; padding: 32px; border: 1px solid var(--br2); border-radius: 16px; background: var(--s1); margin-bottom: 48px;">
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 8px; color: var(--tx);">Your Name *</label>
+        <input type="text" placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1px solid var(--br2); border-radius: 8px; background: var(--bg); color: var(--tx); font-family: 'Outfit', sans-serif; box-sizing: border-box;" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 8px; color: var(--tx);">Phone Number *</label>
+        <input type="tel" placeholder="e.g., +880 1234 567890" style="width: 100%; padding: 12px; border: 1px solid var(--br2); border-radius: 8px; background: var(--bg); color: var(--tx); font-family: 'Outfit', sans-serif; box-sizing: border-box;" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 8px; color: var(--tx);">Email *</label>
+        <input type="email" placeholder="your@email.com" style="width: 100%; padding: 12px; border: 1px solid var(--br2); border-radius: 8px; background: var(--bg); color: var(--tx); font-family: 'Outfit', sans-serif; box-sizing: border-box;" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 8px; color: var(--tx);">Issue Category *</label>
+        <select style="width: 100%; padding: 12px; border: 1px solid var(--br2); border-radius: 8px; background: var(--bg); color: var(--tx); font-family: 'Outfit', sans-serif; box-sizing: border-box;" required>
+          <option value="">Select a category...</option>
+          <option value="technical">Technical Issue</option>
+          <option value="billing">Billing Question</option>
+          <option value="feature">Feature Request</option>
+          <option value="bug">Bug Report</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 8px; color: var(--tx);">Describe Your Problem *</label>
+        <textarea placeholder="Please describe your issue in detail..." style="width: 100%; padding: 12px; border: 1px solid var(--br2); border-radius: 8px; background: var(--bg); color: var(--tx); font-family: 'Outfit', sans-serif; box-sizing: border-box; resize: vertical; min-height: 120px; line-height: 1.5;" required></textarea>
+      </div>
+      
+      <button type="submit" style="width: 100%; padding: 14px; border: none; border-radius: 8px; background: linear-gradient(135deg, var(--p), var(--c)); color: white; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.3s;">Submit Ticket</button>
+    </form>
+    
+    <h2 style="font-family:'Syne',sans-serif; font-size:24px; font-weight:700; margin-top:40px; margin-bottom:16px;">Other Support Methods</h2>
+    <p style="color: var(--tx2); margin-bottom: 32px; font-size: 16px; line-height: 1.8;">
+      You can also reach us through these channels.
+    </p>
+    
+    <div style="display:grid; gap:24px;">
+      <div style="padding:24px; border:1px solid var(--br2); border-radius:16px; background:var(--s1);">
+        <h3 style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px;">📧 Email Support</h3>
+        <p style="color:var(--tx2); margin-bottom:12px; font-size:13px;">Email us at support@elecsy.com</p>
+        <p style="color:var(--tx3); font-size:12px;">Response time: Within 24 hours</p>
+      </div>
+      
+      <div style="padding:24px; border:1px solid var(--br2); border-radius:16px; background:var(--s1);">
+        <h3 style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px;">💬 WhatsApp</h3>
+        <p style="color:var(--tx2); margin-bottom:12px; font-size:13px;"><a href="https://wa.me/8801234567890" style="color:var(--pl); text-decoration:none;">Chat with us on WhatsApp</a></p>
+        <p style="color:var(--tx3); font-size:12px;">Response time: Within 2 hours</p>
+      </div>
+      
+      <div style="padding:24px; border:1px solid var(--br2); border-radius:16px; background:var(--s1);">
+        <h3 style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px;">📘 Facebook</h3>
+        <p style="color:var(--tx2); margin-bottom:12px; font-size:13px;"><a href="https://www.facebook.com/elecsy" style="color:var(--pl); text-decoration:none;">Message us on Facebook</a></p>
+        <p style="color:var(--tx3); font-size:12px;">Response time: Within 4 hours</p>
+      </div>
+      
+      <div style="padding:24px; border:1px solid var(--br2); border-radius:16px; background:var(--s1);">
+        <h3 style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px;">📞 Phone</h3>
+        <p style="color:var(--tx2); margin-bottom:12px; font-size:13px;">Call us during business hours</p>
+        <p style="color:var(--tx3); font-size:12px;">Monday-Friday: 9 AM - 6 PM</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand-col"><h3><div class="logo-box-small">⚡</div> ELECSY</h3><p>Building professional, encrypted desktop software for Bangladeshi businesses since 2020.</p><div class="social-links"><a href="https://www.facebook.com/elecsy" class="social-link" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a><a href="https://www.twitter.com/elecsy" class="social-link" title="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a><a href="https://www.linkedin.com/company/elecsy" class="social-link" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a><a href="https://www.instagram.com/elecsy" class="social-link" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a><a href="https://wa.me/8801234567890" class="social-link" title="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a></div></div>
+      <div><h4 class="footer-col-title">Products</h4><div class="footer-links"><a href="products.html">All Products</a><a href="packages.html">Packages</a><a href="contact.html">Contact</a></div></div>
+      <div><h4 class="footer-col-title">Company</h4><div class="footer-links"><a href="about.html">About Us</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a></div></div>
+      <div><h4 class="footer-col-title">Support</h4><div class="footer-links"><a href="faq.html">FAQ</a><a href="support.html">Support</a><a href="docs.html">Documentation</a></div></div>
+      <div><h4 class="footer-col-title">Legal</h4><div class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="copyright.html">Copyright</a><a href="cookies.html">Cookies</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2020-2026 ELECSY. All rights reserved.</div>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a><a href="sitemap.html">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
